@@ -14,6 +14,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [slug]);
 
+  // Related services in the same category or adjacent
+  const categoryServices = dedicatedServicesData.filter(
+    (s) => s.category === service.category
+  );
+  const relatedServices = categoryServices.length > 1 ? categoryServices : dedicatedServicesData.slice(0, 5);
+
   return (
     <main className="detail-page">
       {/* ============ SERVICE HERO ============ */}
@@ -40,7 +46,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
           </nav>
 
           <div className="svc-hero-top label">
-            <span>DISCIPLINE: {service.ref}</span>
+            <span>REF: {service.ref}</span>
             <span className="dot" aria-hidden="true"></span>
             <span>{service.category}</span>
           </div>
@@ -66,21 +72,32 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
             <p>{service.objective}</p>
 
             <div className="detail-block">
-              <h3>Core Capabilities & Focus Areas</h3>
-              <p>
-                Our services are delivered through structured, standards-based engineering practices
-                aligned with operational and regulatory requirements.
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '24px' }}>
+              <h3>Core Capabilities</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px' }}>
                 {service.capabilities.map((capGroup, idx) => (
-                  <div key={idx} style={{ background: 'var(--grey)', padding: '28px 32px', borderLeft: '3px solid var(--btn-green)' }}>
-                    <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: 'var(--ink)', marginBottom: '14px' }}>
+                  <div
+                    key={idx}
+                    style={{
+                      background: 'var(--grey)',
+                      padding: '24px 28px',
+                      borderLeft: '3px solid var(--btn-green)',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    <h4
+                      style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '17px',
+                        color: 'var(--ink)',
+                        marginBottom: '12px',
+                        fontWeight: 600,
+                      }}
+                    >
                       {capGroup.group}
                     </h4>
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '15px', color: '#3C4A45' }}>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '15px', color: '#3C4A45' }}>
                       {capGroup.items.map((item, i) => (
-                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', lineHeight: 1.5 }}>
+                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', lineHeight: 1.55 }}>
                           <span style={{ color: 'var(--btn-green)', fontWeight: 800, marginTop: '-1px' }}>&rsaquo;</span>
                           <span>{item}</span>
                         </li>
@@ -91,39 +108,34 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
               </div>
             </div>
 
-            {service.intendedOutcomes && service.intendedOutcomes.length > 0 && (
-              <div className="detail-block">
-                <h3>Intended Outcomes</h3>
-                <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginTop: '16px' }}>
-                  {service.intendedOutcomes.map((outcome, idx) => (
-                    <li
-                      key={idx}
-                      style={{
-                        background: 'var(--grey)',
-                        padding: '16px 20px',
-                        borderLeft: '2px solid var(--brand)',
-                        fontSize: '14.5px',
-                        color: 'var(--ink)',
-                        fontWeight: 500,
-                      }}
-                    >
-                      {outcome}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
             <div className="detail-block">
               <h3>Technical Approach & Delivery</h3>
               <p>{service.approach}</p>
             </div>
+
+            {service.outcomeStatement && (
+              <div className="detail-block">
+                <h3>Outcome & Operational Value</h3>
+                <div
+                  style={{
+                    background: 'var(--grey)',
+                    padding: '20px 24px',
+                    borderLeft: '3px solid var(--brand)',
+                    borderRadius: '4px',
+                  }}
+                >
+                  <p style={{ margin: 0, fontSize: '15px', color: 'var(--ink)', lineHeight: 1.6, fontWeight: 500 }}>
+                    {service.outcomeStatement}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Technical Sidebar */}
           <aside className="detail-sidebar" aria-label="Technical Specifications">
             <div className="side-card">
-              <h4>Governing Standards & Protocols</h4>
+              <h4>Governing Standards</h4>
               <div className="side-chips">
                 {service.standards.map((std, i) => (
                   <span key={i} className="side-chip num" style={{ fontSize: '13px', background: '#fff' }}>
@@ -145,9 +157,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
             </div>
 
             <div className="side-card">
-              <h4>Engineering Disciplines</h4>
+              <h4>Related Service Lines</h4>
               <div className="side-nav-list">
-                {dedicatedServicesData.map((s) => (
+                {relatedServices.map((s) => (
                   <a
                     key={s.slug}
                     href={`/services/${s.slug}`}
@@ -159,6 +171,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
                     style={{
                       borderColor: s.slug === service.slug ? 'var(--btn-green)' : undefined,
                       fontWeight: s.slug === service.slug ? 700 : undefined,
+                      background: s.slug === service.slug ? 'rgba(100,156,8,0.06)' : undefined,
                     }}
                   >
                     <span>{s.title}</span>
@@ -166,6 +179,25 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
                   </a>
                 ))}
               </div>
+              <a
+                href="/services"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  marginTop: '16px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  color: 'var(--brand)',
+                  textDecoration: 'none',
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('/services');
+                }}
+              >
+                ← View All Services Catalogue
+              </a>
             </div>
 
             <div className="side-card" style={{ background: 'var(--slate)', color: '#fff', border: 'none' }}>
@@ -192,9 +224,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
       <section className="svc-cta">
         <div className="wrap svc-cta-inner">
           <div>
-            <h2>Ready to Deploy Technical Expertise?</h2>
+            <h2>Scope It With an Engineer</h2>
             <p className="svc-cta-sub">
-              Engage registered ECSA and SACNASP professionals for structured, standards-driven execution.
+              Send your technical requirement and receive a structured scope from our registered engineering and scientific professionals.
             </p>
           </div>
           <a
@@ -212,3 +244,4 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
     </main>
   );
 };
+
