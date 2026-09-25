@@ -52,104 +52,92 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
 
         <div className="hero-base label">
           <span>DOC NO. {service.docNo}</span>
-          <span>SANS / ISO COMPLIANT</span>
-          <span>REV 2.4</span>
+          <span>STANDARDS-DRIVEN METHODOLOGY</span>
+          <span>MARVETHABI CONSULTING ENGINEERS</span>
         </div>
       </section>
 
-      {/* ============ TECHNICAL SPECIFICATION METRICS BAR ============ */}
-      <div className="wrap">
-        <div className="detail-specs-bar">
-          {service.keyStats.map((stat, i) => (
-            <div key={i} className="detail-spec-item">
-              <span className="detail-spec-label">{stat.label}</span>
-              <span className="detail-spec-val num">{stat.value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ============ MAIN BODY & SPECIFICATIONS ============ */}
+      {/* ============ SERVICE CONTENT & SPECIFICATIONS ============ */}
       <section className="detail-body-section">
         <div className="wrap detail-grid">
           {/* Main Content Column */}
           <div className="detail-prose">
-            <h2>Engineering Scope & Deliverables</h2>
-            <p>
-              Delivering high-integrity, standards-aligned engineering solutions tailored
-              for public infrastructure, industrial plants, and mining developments across
-              South Africa.
-            </p>
+            <h2>Engineering Objective & Scope</h2>
+            <p>{service.objective}</p>
 
-            <div className="deliv-sections">
-              {service.deliverables.map((sec, idx) => (
-                <div key={idx} className="detail-block">
-                  <h3 className="card-title">{sec.category}</h3>
-                  <div className="deliv-grid">
-                    {sec.items.map((item, i) => (
-                      <div key={i} className="deliv-card">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* 4-Phase Methodology */}
             <div className="detail-block">
-              <h3>Engineering Methodology & Execution</h3>
+              <h3>Core Capabilities & Focus Areas</h3>
               <p>
-                Our projects follow a disciplined, standards-driven lifecycle that ensures
-                traceability, statutory compliance, and zero defect recurrence.
+                Our services are delivered through structured, standards-based engineering practices
+                aligned with operational and regulatory requirements.
               </p>
-              <div className="method-timeline">
-                {service.methodology.map((m) => (
-                  <div key={m.phase} className="method-step">
-                    <span className="method-no num">{m.phase}</span>
-                    <div className="method-content">
-                      <h4>{m.title}</h4>
-                      <p>{m.desc}</p>
-                    </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '24px' }}>
+                {service.capabilities.map((capGroup, idx) => (
+                  <div key={idx} style={{ background: 'var(--grey)', padding: '28px 32px', borderLeft: '3px solid var(--btn-green)' }}>
+                    <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: 'var(--ink)', marginBottom: '14px' }}>
+                      {capGroup.group}
+                    </h4>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '15px', color: '#3C4A45' }}>
+                      {capGroup.items.map((item, i) => (
+                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', lineHeight: 1.5 }}>
+                          <span style={{ color: 'var(--btn-green)', fontWeight: 800, marginTop: '-1px' }}>&rsaquo;</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Statutory Standards & Protocols */}
+            {service.intendedOutcomes && service.intendedOutcomes.length > 0 && (
+              <div className="detail-block">
+                <h3>Intended Outcomes</h3>
+                <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginTop: '16px' }}>
+                  {service.intendedOutcomes.map((outcome, idx) => (
+                    <li
+                      key={idx}
+                      style={{
+                        background: 'var(--grey)',
+                        padding: '16px 20px',
+                        borderLeft: '2px solid var(--brand)',
+                        fontSize: '14.5px',
+                        color: 'var(--ink)',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="detail-block">
-              <h3>Governing Standards & Regulatory Matrix</h3>
-              <div className="side-chips" style={{ marginTop: '16px' }}>
+              <h3>Technical Approach & Delivery</h3>
+              <p>{service.approach}</p>
+            </div>
+          </div>
+
+          {/* Technical Sidebar */}
+          <aside className="detail-sidebar" aria-label="Technical Specifications">
+            <div className="side-card">
+              <h4>Governing Standards & Protocols</h4>
+              <div className="side-chips">
                 {service.standards.map((std, i) => (
-                  <span key={i} className="side-chip num" style={{ padding: '8px 16px', fontSize: '14px' }}>
+                  <span key={i} className="side-chip num" style={{ fontSize: '13px', background: '#fff' }}>
                     {std}
                   </span>
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* Sticky Technical Sidebar */}
-          <aside className="detail-sidebar" aria-label="Technical Specifications">
-            <div className="side-card">
-              <h4>Technical Specifications</h4>
-              <dl style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {service.specifications.map((spec, i) => (
-                  <div key={i}>
-                    <dt className="detail-spec-label">{spec.label}</dt>
-                    <dd style={{ marginTop: '4px', fontSize: '14px', color: '#16211E', fontWeight: 500 }}>
-                      {spec.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
             </div>
 
             <div className="side-card">
               <h4>Applicable Sectors</h4>
               <div className="side-chips">
                 {service.sectors.map((sec, i) => (
-                  <span key={i} className="side-chip">
+                  <span key={i} className="side-chip" style={{ fontSize: '13px' }}>
                     {sec}
                   </span>
                 ))}
@@ -157,7 +145,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
             </div>
 
             <div className="side-card">
-              <h4>All Engineering Disciplines</h4>
+              <h4>Engineering Disciplines</h4>
               <div className="side-nav-list">
                 {dedicatedServicesData.map((s) => (
                   <a
@@ -181,9 +169,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
             </div>
 
             <div className="side-card" style={{ background: 'var(--slate)', color: '#fff', border: 'none' }}>
-              <h4 style={{ color: 'var(--brand-light)' }}>Engage an Engineer</h4>
+              <h4 style={{ color: 'var(--brand-light)' }}>Technical Enquiry</h4>
               <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, marginBottom: '20px' }}>
-                Discuss your infrastructure requirement directly with our registered principal engineers.
+                Discuss your technical scope or statutory compliance requirements directly with our registered professionals.
               </p>
               <a
                 href="/contact"
@@ -193,7 +181,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
                   onNavigate('/contact');
                 }}
               >
-                Request Scoping Call
+                Request Consultation
               </a>
             </div>
           </aside>
@@ -206,7 +194,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
           <div>
             <h2>Ready to Deploy Technical Expertise?</h2>
             <p className="svc-cta-sub">
-              Receive a structured project proposal and compliance specification from registered ECSA/SACNASP professionals.
+              Engage registered ECSA and SACNASP professionals for structured, standards-driven execution.
             </p>
           </div>
           <a

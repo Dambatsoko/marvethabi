@@ -416,16 +416,25 @@ export interface DedicatedService {
   category: string;
   tagline: string;
   summary: string;
-  heroImage: string;
   docNo: string;
+  objective: string;
+  capabilities: { group: string; items: string[] }[];
+  approach: string;
+  intendedOutcomes?: string[];
   standards: string[];
-  disciplines: string[];
-  keyStats: { label: string; value: string }[];
-  deliverables: { category: string; items: string[] }[];
-  methodology: { phase: string; title: string; desc: string }[];
-  specifications: { label: string; value: string }[];
   sectors: string[];
-  relatedServices: { title: string; slug: string; ref: string }[];
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  position: string;
+  image: string;
+  intro: string;
+  qualifications: string[];
+  expertise: string[];
+  experienceSummary: string;
+  professionalFocus: string;
 }
 
 export const dedicatedServicesData: DedicatedService[] = [
@@ -433,341 +442,342 @@ export const dedicatedServicesData: DedicatedService[] = [
     slug: 'reliability-engineering',
     ref: 'RE-01',
     title: 'Reliability Engineering',
-    category: 'Asset Reliability & Condition Monitoring',
-    tagline: 'Condition-Based Programmes, Defect Elimination & Criticality Systems',
+    category: 'Asset Reliability & Maintainability',
+    tagline: 'Asset Reliability, Availability and Maintainability Methodologies',
     summary:
-      'We engineer asset reliability programmes that detect failure modes before unplanned downtime strikes. From root cause analysis and multi-spectral condition monitoring to plant-wide criticality ranking, our ISO55000-aligned strategies protect capital-intensive operations across mining, power, and manufacturing.',
-    heroImage: 'cap-reliability.jpg',
+      'MarveThabi helps organisations improve asset reliability, availability and maintainability through structured, data-driven reliability engineering methodologies. The objective is to reduce unplanned downtime, improve maintenance effectiveness, manage operational risk and extend asset life across the asset lifecycle.',
     docNo: 'MT-ENG-RE-01',
-    standards: ['ISO 55000 / 55001', 'ISO 14224', 'ISO 10816 Vibration', 'SANS / ECSA', 'OHS Act Section 21'],
-    disciplines: ['Mechanical Reliability', 'Electrical Diagnostics', 'Tribology', 'Vibration Analysis'],
-    keyStats: [
-      { label: 'Unplanned Downtime Reduction', value: 'Up to 42%' },
-      { label: 'Condition Monitoring Accuracy', value: '99.4%' },
-      { label: 'Critical Assets Audited', value: '25,000+' },
-      { label: 'Statutory Standard', value: 'ISO 55000' },
-    ],
-    deliverables: [
+    objective:
+      'The objective is to reduce unplanned downtime, improve maintenance effectiveness, manage operational risk and extend asset life across the asset lifecycle.',
+    capabilities: [
       {
-        category: 'Criticality & Hierarchy Analysis',
+        group: 'Core Reliability Capabilities',
         items: [
-          'Asset Criticality Development & Risk Matrix Scoring',
-          'Asset Hierarchy Development aligned with ISO 14224 standard taxonomy',
-          'Criticality Spares Analysis & Inventory Stocking Optimisation',
-          'Failure Modes, Effects and Criticality Analysis (FMECA)',
-        ],
-      },
-      {
-        category: 'Strategy, Tactics & Defect Elimination',
-        items: [
-          'Asset Strategies & Tactics Plan Development across mechanical & electrical trains',
-          'Systematic Defect Elimination & 5-Why / Apollo Root Cause Analysis (RCA)',
-          'Total Fluids Management & Precision Lubrication Regimes',
-          'Conveyor Health, Splice Integrity & Structural Stress Monitoring',
-        ],
-      },
-      {
-        category: 'Advanced Condition Monitoring',
-        items: [
-          'Tri-axial Baseline Vibration Analysis & Spectrum Diagnostics',
-          'Oil Degradation, Particle Counting & Ferrography Testing',
-          'Motor Circuit Evaluation & Dynamic Current Signature Analysis',
-          'Calibrated Thermographic Inspection for High-Voltage Switchgear & Transformers',
+          'Reliability-Centred Maintenance (RCM) facilitation and implementation',
+          'Asset Criticality Analysis based on risk, safety, cost and production impact',
+          'Failure Modes and Effects Analysis (FMEA)',
+          'Maintenance Strategy and Asset Tactics Development',
+          'Root Cause Failure Analysis (RCFA)',
         ],
       },
     ],
-    methodology: [
-      {
-        phase: '01',
-        title: 'Baseline Audit & Criticality Scoring',
-        desc: 'We map every physical asset, establish functional hierarchies, and compute risk priority numbers based on safety, environmental, and financial impact.',
-      },
-      {
-        phase: '02',
-        title: 'FMECA & Failure Mode Modeling',
-        desc: 'Engineering failure modes, identifying root causes, and assigning predictive maintenance tasks rather than arbitrary calendar-based overhauls.',
-      },
-      {
-        phase: '03',
-        title: 'Sensor Deployment & Baseline Fingerprinting',
-        desc: 'Deploying calibrated vibration probes, thermal imaging, and oil sampling points to establish high-precision baseline operational signatures.',
-      },
-      {
-        phase: '04',
-        title: 'Predictive Tactics & Continuous Loop',
-        desc: 'Integrating condition monitoring alerts directly into CMMS/ERP workflows to eliminate repeat defects and maximize mean time between failures (MTBF).',
-      },
-    ],
-    specifications: [
-      { label: 'Regulatory Alignment', value: 'ISO 55000, ISO 14224, SANS Standards' },
-      { label: 'Engineering Lead', value: 'Principal Reliability Engineer (ECSA Registered)' },
-      { label: 'Data Output', value: 'Real-time telemetry, CMMS maintenance task imports, PDF audit dossiers' },
-      { label: 'Target Facilities', value: 'Mines, Beneficiation Plants, Water Treatment Works, Power Stations' },
-    ],
-    sectors: ['Mining & Minerals', 'Power Generation & Utilities', 'Heavy Manufacturing', 'Municipal Water Infrastructure'],
-    relatedServices: [
-      { title: 'Asset Management', slug: 'asset-management', ref: 'AM-02' },
-      { title: 'Electrical Engineering', slug: 'electrical-engineering', ref: 'EE-03' },
-      { title: 'Geo-Environmental', slug: 'geo-environmental', ref: 'GE-04' },
-    ],
+    approach:
+      'The approach is technically sound, risk-based and aligned with operational and business performance objectives. We work closely with plant engineering, maintenance teams, and operations to embed sustainable reliability practices that eliminate chronic failure modes.',
+    standards: ['ISO 55000 / 55001', 'ISO 14224 (Taxonomy & Reliability Data)', 'SANS Standards', 'ECSA Code of Practice'],
+    sectors: ['Mining & Mineral Processing', 'Petrochemical & Refining', 'Heavy Manufacturing', 'Power Generation & Utilities', 'Water Infrastructure'],
   },
   {
     slug: 'asset-management',
     ref: 'AM-02',
     title: 'Asset Management',
-    category: 'Physical Asset Stewardship & ISO55000',
-    tagline: 'ISO55000 Lifecycle Engineering, Digital Twins & Master Data',
+    category: 'Physical Asset Stewardship & ISO 55000',
+    tagline: 'ISO 55000 Principles, Asset Performance & Lifecycle Cost',
     summary:
-      'We deliver end-to-end physical asset management frameworks engineered for public entities, municipalities, and corporations that must account for, maintain, and optimize every asset on their books. Aligned with ISO55001, GRAP 17, and National Treasury guidelines.',
-    heroImage: 'cap-asset.jpg',
+      'MarveThabi\'s Asset Management services are aligned with ISO 55000 principles and focus on asset performance, risk and lifecycle cost. The approach integrates technical, financial and risk considerations to support better decision-making, governance and long-term asset value.',
     docNo: 'MT-ENG-AM-02',
-    standards: ['ISO 55001', 'GRAP 17 Asset Accounting', 'National Treasury Framework', 'SANS 55000'],
-    disciplines: ['Strategic Asset Management', 'Lifecycle Costing', 'Digital Twins', 'Master Data Governance'],
-    keyStats: [
-      { label: 'Public Sector Compliance', value: '100% Clean Audit' },
-      { label: 'Municipal Asset Registers', value: 'GRAP 17 Ready' },
-      { label: 'Lifecycle Value Gain', value: '28% OpEx Saved' },
-      { label: 'Global Standard', value: 'ISO 55001' },
-    ],
-    deliverables: [
+    objective:
+      'To integrate technical, financial and risk considerations across physical asset portfolios to support better decision-making, governance and long-term asset value.',
+    capabilities: [
       {
-        category: 'Policy, Strategy & Governance',
+        group: 'Core Asset Management Capabilities',
         items: [
-          'Physical Asset Management ISO 55000 Implementation & Governance Roadmaps',
-          'Asset Management Policy, Philosophy and Strategic Asset Management Plan (SAMP)',
-          'Asset Lifecycle Cost Modeling (Capex vs. Opex optimization)',
-          'Asset Performance Management & Service Delivery Level KPIs',
-        ],
-      },
-      {
-        category: 'Field Verification & Registers',
-        items: [
-          'Physical Asset Identification, Barcoding, QR & RFID Tagging in Field',
-          'Asset Verification, Condition Grading & Useful Life Remaining Calculation',
-          'GRAP 17 and mSCOA Compliant Asset Registers with GPS Coordinates',
-          'Componentization of Bulk Infrastructure into depreciable child components',
-        ],
-      },
-      {
-        category: 'Digital Twins & Master Data',
-        items: [
-          'Master Data Governance, Cleansing & Standardization',
-          'Asset Digital Twin Generation with GIS spatial coordinates',
-          'Work Management & Maintenance Schedule Integration with SAP / Maximo / Ellipse',
-          'Disposal, Decommissioning & Asset Replacement Capital Forecasting',
+          'Asset Management Framework Development aligned with ISO 55000',
+          'Maintenance Planning and Scheduling',
+          'Asset Registers and Asset Hierarchies',
+          'Lifecycle Costing and Risk Analysis',
+          'Asset Performance Measurement and Benchmarking',
         ],
       },
     ],
-    methodology: [
-      {
-        phase: '01',
-        title: 'Maturity Assessment & Gap Analysis',
-        desc: 'Benchmarking the organization against ISO 55001 and statutory accounting guidelines to pinpoint data, process, and governance gaps.',
-      },
-      {
-        phase: '02',
-        title: 'Field Verification & Condition Grading',
-        desc: 'Mobilizing certified engineering field teams with handheld scanners and GPS loggers to verify, barcode, and grade physical condition.',
-      },
-      {
-        phase: '03',
-        title: 'Master Data & Register Reconstruction',
-        desc: 'Restructuring parent-child hierarchies, reconciling unbundled assets against financial records, and producing audit-proof master data.',
-      },
-      {
-        phase: '04',
-        title: 'SAMP Deployment & Digital Twin',
-        desc: 'Operationalizing the Strategic Asset Management Plan with digital twins for live visibility into asset performance and replacement liabilities.',
-      },
+    approach:
+      'Our approach connects physical asset condition with statutory accounting and strategic governance. We assist organizations to establish robust hierarchies, accurate asset registers, and structured maintenance schedules that protect capital investments.',
+    intendedOutcomes: [
+      'Stronger asset performance across operational portfolios',
+      'Better capital and maintenance investment decisions',
+      'Improved asset availability and reduced downtime',
+      'Sustainable lifecycle value and audit compliance',
     ],
-    specifications: [
-      { label: 'Framework Compliance', value: 'ISO 55000/1/2, GRAP 17, MFMA / PFMA' },
-      { label: 'Field Capture Method', value: 'Sub-meter GNSS, Industrial RFID / Barcoding, Drone Photogrammetry' },
-      { label: 'Enterprise Systems', value: 'SAP PM, IBM Maximo, IFS, Oracle, mSCOA Systems' },
-      { label: 'Deliverable Type', value: 'Verified Unbundled Asset Register, SAMP, Digital Twin Portal' },
-    ],
-    sectors: ['Government Departments', 'Municipalities & Metros', 'Water Boards & Utilities', 'Mining & Resources'],
-    relatedServices: [
-      { title: 'Reliability Engineering', slug: 'reliability-engineering', ref: 'RE-01' },
-      { title: 'Electrical Engineering', slug: 'electrical-engineering', ref: 'EE-03' },
-      { title: 'Geo-Environmental', slug: 'geo-environmental', ref: 'GE-04' },
-    ],
+    standards: ['ISO 55000 / 55001', 'GRAP 17 Asset Accounting', 'National Treasury Asset Framework', 'SANS 55000'],
+    sectors: ['Government Departments & Public Entities', 'Municipalities & Metros', 'Water Boards & Utilities', 'Mining & Resources', 'Commercial Portfolios'],
   },
   {
     slug: 'electrical-engineering',
     ref: 'EE-03',
     title: 'Electrical Engineering',
-    category: 'Power Infrastructure, Reticulation & Construction',
-    tagline: 'Transmission, Reticulation, Substations & Renewable Integration',
+    category: 'Industrial, Commercial & Municipal Infrastructure',
+    tagline: 'Power Infrastructure Design, Reticulation & Technical Compliance',
     summary:
-      'We engineer reliable electrical infrastructure from bulk high-voltage transmission and substation distribution to municipal reticulation, industrial switchgear, standby power systems, and utility-scale solar PV microgrids.',
-    heroImage: 'cap-electrical.jpg',
+      'MarveThabi provides professional electrical engineering services for industrial and commercial facilities. We deliver robust power distribution designs, municipal reticulation schemes, backup power systems, and technical compliance audits.',
     docNo: 'MT-ENG-EE-03',
-    standards: ['SANS 10142-1 & 2', 'NRS 048 Power Quality', 'Eskom Standards', 'IEEE Guidelines'],
-    disciplines: ['High Voltage Transmission', 'Medium/Low Voltage Reticulation', 'Protection Coordination', 'Renewable Microgrids'],
-    keyStats: [
-      { label: 'Substation Projects', value: '132kV / 11kV' },
-      { label: 'Network Power Quality', value: 'NRS 048 Compliant' },
-      { label: 'Certification Standard', value: 'SANS 10142 COC' },
-      { label: 'Council Registration', value: 'ECSA Registered' },
-    ],
-    deliverables: [
+    objective:
+      'To provide dependable, standards-compliant electrical infrastructure engineering that guarantees operational continuity, personnel safety, and regulatory compliance.',
+    capabilities: [
       {
-        category: 'Substations & Bulk Transmission',
+        group: 'Infrastructure & Reticulation Design',
         items: [
-          'High Voltage Transmission & Distribution Line Design (up to 132kV)',
-          'Substation Engineering, Switchgear Specifications & Transformer Sizing',
-          'Protection Coordination, Relay Settings & Short Circuit Fault Studies',
-          'Earthing Design, Soil Resistivity Testing & Lightning Protection to SANS 10313',
+          'Electrical Infrastructure Design and Development',
+          'Electrical Reticulation and Power Distribution Design',
+          'Electrical Transmission and Distribution Design Support',
+          'Municipal and Township Electrical Reticulation Design',
+          'Street and Area Lighting Design',
         ],
       },
       {
-        category: 'Municipal & Township Reticulation',
+        group: 'Power Security & Building Systems',
         items: [
-          'Underground Cable Reticulation & Overhead Distribution Networks',
-          'Municipal Bulk Intake Points & Ring Main Unit (RMU) Upgrades',
-          'Street Lighting & High-Mast Energy-Efficient LED Illumination',
-          'Township Electrification Schemes & Smart Metering Rollouts',
+          'Standby Power Systems including generators and UPS',
+          'Lightning Protection and Earthing Design',
+          'Voice and Data Infrastructure Design',
+          'Access Control, Security and CCTV Systems Design',
+          'Fire Detection and Alarm Systems Design',
         ],
       },
       {
-        category: 'Power Security & Renewable Generation',
+        group: 'Compliance & Technical Assurance',
         items: [
-          'Commercial & Industrial Solar PV Microgrids with Battery Storage (BESS)',
-          'Standby Diesel Generator Installation, Automatic Transfer Switches (ATS) & Synchronization',
-          'Cable Fault Detection, VLF Testing & Precision Thump Testing',
-          'Statutory Electrical Certificate of Compliance (COC) for Commercial & Industrial Sites',
+          'Electrical Compliance and Technical Audits',
+          'Project Engineering Support and Monitoring',
         ],
       },
     ],
-    methodology: [
+    approach:
+      'Every project is directed by registered engineering technologists to ensure compliance with SANS 10142, utility grid connection codes, and statutory safety mandates. Designs are developed with full AutoCAD/CAD single-line diagrams, protection settings, and bill of quantities.',
+    standards: ['SANS 10142-1 & 2', 'NRS 048 Power Quality', 'SANS 10313 Lightning Protection', 'ECSA Standards'],
+    sectors: ['Mining & Minerals', 'Industrial & Manufacturing', 'Municipalities & Metros', 'Commercial Facilities', 'Public Infrastructure'],
+  },
+  {
+    slug: 'condition-monitoring',
+    ref: 'CM-01',
+    title: 'Condition Monitoring',
+    category: 'Predictive & Proactive Maintenance',
+    tagline: 'Early Fault Detection, Non-Destructive Testing & Asset Diagnostics',
+    summary:
+      'MarveThabi provides advanced condition monitoring services supporting predictive and proactive maintenance. The purpose is early fault detection, reduced unplanned downtime and improved asset reliability.',
+    docNo: 'MT-ENG-CM-01',
+    objective:
+      'The purpose is early fault detection, reduced unplanned downtime and improved asset reliability through precision testing and diagnostic analytics.',
+    capabilities: [
       {
-        phase: '01',
-        title: 'Load Flow & Network Modeling',
-        desc: 'Modeling electrical networks in DigSILENT and ETAP to calculate fault currents, voltage drops, and protection tripping curves.',
+        group: 'Diagnostic & Predictive Technologies',
+        items: [
+          'Vibration Analysis',
+          'Oil Sampling and Oil Condition Analysis',
+          'Infrared Thermography',
+          'Motor Circuit Analysis (MCA)',
+          'Transformer Condition Assessments',
+        ],
       },
       {
-        phase: '02',
-        title: 'Detailed Engineering CAD & Specifications',
-        desc: 'Developing comprehensive single-line diagrams (SLD), cable schedules, switchgear layouts, and bills of quantities.',
+        group: 'Non-Destructive Testing (NDT) & Inspection',
+        items: [
+          'Ultrasonic Testing (UT)',
+          'Visual Testing (VT)',
+          'Liquid Penetrant Testing (PT)',
+          'Radiographic Testing (RT)',
+          'Eddy Current Testing (ECT)',
+          'Thickness Measurement',
+          'Weld Inspection and Evaluation',
+        ],
       },
       {
-        phase: '03',
-        title: 'EPC Management & Quality Assurance',
-        desc: 'On-site engineering supervision, testing cable insulation resistance, pressure testing transformers, and validating relay curves.',
-      },
-      {
-        phase: '04',
-        title: 'Energization & Compliance Certification',
-        desc: 'Controlled energization, power quality harmonics recording to NRS 048, and issuance of certified Electrical Certificates of Compliance (COC).',
+        group: 'Asset Integrity & Reporting',
+        items: [
+          'Corrosion Monitoring',
+          'Equipment Condition Assessments',
+          'Diagnostic Reporting and Maintenance Recommendations',
+          'Integrity and Reliability Assessments',
+        ],
       },
     ],
-    specifications: [
-      { label: 'Voltage Classes', value: 'Low Voltage (400V/230V), MV (11kV/22kV/33kV), HV (66kV/132kV)' },
-      { label: 'Design Tools', value: 'AutoCAD Electrical, DigSILENT PowerFactory, ETAP, ReticMaster' },
-      { label: 'Statutory Certification', value: 'ECSA Pr.Eng / Pr.Tech.Eng certified blueprints & SANS 10142 COCs' },
-      { label: 'Power Sources', value: 'Grid Intake, Solar PV Hybrid, Dual Generator Synchronized Stations' },
-    ],
-    sectors: ['Municipalities & Public Works', 'Industrial Plants & Smelters', 'Mining Operations', 'Commercial Developments'],
-    relatedServices: [
-      { title: 'Reliability Engineering', slug: 'reliability-engineering', ref: 'RE-01' },
-      { title: 'Asset Management', slug: 'asset-management', ref: 'AM-02' },
-      { title: 'Geo-Environmental', slug: 'geo-environmental', ref: 'GE-04' },
-    ],
+    approach:
+      'Our certified analysts evaluate mechanical trains, high-voltage switchgear, and structural components under actual operating conditions. Findings are synthesized into concise diagnostic reports with prioritized maintenance recommendations.',
+    standards: ['ISO 18436 (Condition Monitoring & Diagnostics)', 'ISO 10816 (Mechanical Vibration)', 'ASNT / PCN Standards', 'SANS Standards'],
+    sectors: ['Mining & Beneficiation Plants', 'Petrochemical & Gas', 'Power Utilities & Substations', 'Water Pumping Stations', 'Processing Plants'],
   },
   {
     slug: 'geo-environmental',
     ref: 'GE-04',
-    title: 'Geo-Environmental',
-    category: 'Hydrogeology, Environmental Licences & Rehabilitation',
-    tagline: 'Hydrogeological Studies, Environmental Authorisations & Water Licensing',
+    title: 'Environmental / Geo-Environmental Services',
+    category: 'Environmental Management & Specialist Advisory',
+    tagline: 'Regulatory Compliance, Sustainable Resource Use & Responsible Project Development',
     summary:
-      'We combine professional hydrogeological engineering with statutory environmental management. Our registered natural scientists (SACNASP) ensure compliance with national environmental, water, and mining legislation from baseline geophysics and water licensing to mine closure and land rehabilitation.',
-    heroImage: 'cap-hydro.jpg',
+      'MarveThabi provides integrated environmental management and specialist advisory services supporting regulatory compliance, sustainable resource use and responsible project development across mining, industrial, utilities and infrastructure.',
     docNo: 'MT-ENG-GE-04',
-    standards: ['National Water Act (NWA 36/1998)', 'NEMA (Act 107/1998)', 'MPRDA Act 28/2002', 'SACNASP Registered'],
-    disciplines: ['Hydrogeology & Geophysics', 'Water Resource Management', 'Environmental Compliance', 'Contaminated Land Remediation'],
-    keyStats: [
-      { label: 'Water Licences Approved', value: '100% Success' },
-      { label: 'Statutory Council', value: 'SACNASP Certified' },
-      { label: 'Boreholes & Aquifers Sited', value: '450+' },
-      { label: 'Regulatory Framework', value: 'NEMA & DWS Compliant' },
-    ],
-    deliverables: [
+    objective:
+      'To deliver credible scientific and regulatory support that secures statutory environmental authorisations, protects natural resources, and manages long-term environmental liability.',
+    capabilities: [
       {
-        category: 'Hydrogeology & Groundwater Engineering',
+        group: 'Environmental Resource Management',
         items: [
-          'Geophysical Resistivity Surveys & Ground Penetrating Radar (GPR)',
-          'Borehole Siting, Drilling Supervision, Casing Design & Aquifer Yield Testing',
-          'Numerical Groundwater Flow & Contaminant Transport Modeling',
-          'Groundwater Chemistry Baseline Audits & Long-term Monitoring Networks',
+          'Water Use Licensing',
+          'Water Conservation and Demand Management Planning',
+          'Integrated Water and Waste Management Planning',
+          'Groundwater and Surface Water Monitoring',
+          'Environmental input into Environmental Impact Assessments',
         ],
       },
       {
-        category: 'Authorisations, Licences & Compliance',
+        group: 'Waste & Emissions Management',
         items: [
-          'Water Use Licence Applications (WULA) & Section 21 Statutory Filings',
-          'Environmental Impact Assessments (EIA), Basic Assessments & Scoping Reports',
-          'Integrated Water and Waste Management Plans (IWWMP)',
-          'Atmospheric Emission Licences (AEL) & Dust Fallout Monitoring Networks',
-          'Independent Environmental Control Officer (ECO) Site Audits',
+          'Waste Licensing and Classification',
+          'Integrated Waste Management Plans',
+          'Sewage Plant Performance Audits',
+          'Greenhouse Gas Management and Carbon Footprint Calculations & Reporting',
+          'Air Quality Management, Dust Fallout Monitoring and Atmospheric Emission Licensing',
+          'Noise Monitoring',
         ],
       },
       {
-        category: 'Waste, Carbon & Site Rehabilitation',
+        group: 'Environmental & Hydrogeological Studies',
         items: [
-          'Waste Classification to SANS 10234 & Waste Management Licences',
-          'NAEIS Reporting & Greenhouse Gas Carbon Footprint Computations',
-          'Contaminated Land Assessments & Remediation Implementation Plans',
-          'Mine Closure Liability Assessments & Environmental Rehabilitation Plans',
+          'Hydrogeological and Environmental Studies',
+          'Borehole Development and Aquifer Testing',
+          'Groundwater Monitoring',
+          'Geophysical Surveys including resistivity, gravity and GPR',
+          'Geological and Geotechnical Services',
+          'Environmental Impact Assessments',
+          'Mining Closure and Rehabilitation Assessments',
+        ],
+      },
+      {
+        group: 'Authorisations, Permits & Licensing',
+        items: [
+          'Water Use Licence Applications (WULA)',
+          'Environmental Management Programmes (EMPr)',
+          'Waste Permits and Mining Rights Support',
+          'Environmental Impact Assessments and Public Participation',
+        ],
+      },
+      {
+        group: 'Compliance, Audits & Monitoring',
+        items: [
+          'Water Use Licence Audits and Waste Audits',
+          'Sewage Plant Performance Audits',
+          'Environmental Control Officer (ECO) Services',
+          'Ongoing Environmental Compliance Monitoring',
+        ],
+      },
+      {
+        group: 'Environmental Rehabilitation & Risk Management',
+        items: [
+          'Rehabilitation and Remedial Action Plans',
+          'Contaminated Land Rehabilitation',
+          'Rehabilitation Strategy Implementation',
+          'Rehabilitation Risk Analysis and Environmental Risk Assessment & Planning',
         ],
       },
     ],
-    methodology: [
-      {
-        phase: '01',
-        title: 'Desktop Review & Geophysical Surveys',
-        desc: 'Analyzing regional geological maps, historical hydrology, and executing on-site multi-electrode 2D resistivity imaging.',
-      },
-      {
-        phase: '02',
-        title: 'Field Drilling, Sampling & Yield Testing',
-        desc: 'Supervising rotary percussion drilling, logging geological strata, and running 72-hour step-drawdown and constant discharge aquifer tests.',
-      },
-      {
-        phase: '03',
-        title: 'Statutory Submission & Public Participation',
-        desc: 'Compiling accredited technical reports, coordinating public stakeholder participation, and engaging directly with DWS and DFFE officials.',
-      },
-      {
-        phase: '04',
-        title: 'Auditing, ECO & Long-term Monitoring',
-        desc: 'Providing statutory ECO oversight, continuous telemetry water sampling, and annual compliance audit certifications.',
-      },
+    approach:
+      'Led by registered professional natural scientists (SACNASP), our advisory combines empirical fieldwork—such as geophysical imaging and aquifer yield testing—with rigorous statutory filings across the National Water Act and NEMA frameworks.',
+    standards: ['National Water Act (NWA 36/1998)', 'NEMA (Act 107/1998)', 'NEM:WA & NEM:AQA', 'SACNASP Code of Conduct'],
+    sectors: ['Mining & Resource Extraction', 'Water Utilities & Municipalities', 'Heavy Manufacturing', 'Agriculture & Land Development', 'Linear Infrastructure'],
+  },
+];
+
+export const teamData: TeamMember[] = [
+  {
+    id: 'marvelous-ngoatle',
+    name: 'Marvelous Ngoatle',
+    position: 'Director',
+    image: 'marvelous.jpg',
+    intro:
+      'Founder and Director of MarveThabi Consulting Engineers with over 14 years of experience in Reliability Engineering, Asset Management, Condition Monitoring and Electrical Engineering. Experience includes mining, petrochemical, water treatment and industrial environments, with technical leadership in maintenance optimisation, reliability improvement and engineering solutions.',
+    qualifications: [
+      'B-Tech Degree in Electrical Engineering',
+      'Professional Engineering Technologist — Engineering Council of South Africa (ECSA)',
+      'Qualified Electrician',
+      'Electrical Trade Test and Wireman\'s Licence',
+      'Certified Thermographer',
+      'Certified Motor Circuit Analyst',
     ],
-    specifications: [
-      { label: 'Statutory Councils', value: 'SACNASP (Natural Scientific Professions), IAH, ECSA' },
-      { label: 'Testing Methods', value: 'SABS 0299 Water Quality, 2D Electrical Resistivity Tomography (ERT)' },
-      { label: 'Government Portals', value: 'e-WULAAS (DWS), NAEIS (Air Quality), SAHRIS' },
-      { label: 'Report Outputs', value: 'Specialist EIA Studies, IWWMP, Aquifer Characterisation Reports' },
+    expertise: [
+      'Reliability Engineering',
+      'Asset Management',
+      'Condition Monitoring',
+      'Predictive Maintenance',
+      'Maintenance Strategy Development',
+      'Electrical Engineering & Assessments',
+      'Backup Power Solutions',
+      'Vibration Analysis',
+      'Thermography Analysis',
+      'Transformer Oil Sampling & Analysis',
     ],
-    sectors: ['Mining & Heavy Extraction', 'Water Utilities & Municipalities', 'Agriculture & Land Development', 'Industrial Manufacturing'],
-    relatedServices: [
-      { title: 'Reliability Engineering', slug: 'reliability-engineering', ref: 'RE-01' },
-      { title: 'Asset Management', slug: 'asset-management', ref: 'AM-02' },
-      { title: 'Electrical Engineering', slug: 'electrical-engineering', ref: 'EE-03' },
+    experienceSummary:
+      'His project experience includes vibration analysis, thermography, transformer oil sampling and analysis, maintenance strategy development, asset management systems, electrical assessments, backup power solutions and condition monitoring programmes.',
+    professionalFocus:
+      'Improving equipment reliability, reducing downtime, optimising maintenance costs and improving operational performance.',
+  },
+  {
+    id: 'thabang-ngoatle',
+    name: 'Thabang Ngoatle',
+    position: 'Director',
+    image: 'thabang.jpg',
+    intro:
+      'Founder and Director with over 12 years of professional experience in Environmental Management, Occupational Health and Safety, and Environmental Compliance. Experience includes environmental consulting, project coordination, compliance monitoring and sustainable environmental management across various industries.',
+    qualifications: [
+      'Master of Science (MSc) in Environmental Management',
+      'Professional Scientist — South African Council for Natural Scientific Professions (SACNASP)',
+      'SAMTRAC qualification',
+      'Currently pursuing a PhD in Geography through the University of South Africa',
     ],
+    expertise: [
+      'Environmental Management',
+      'Environmental Compliance',
+      'Environmental Impact Assessments',
+      'Environmental Audits',
+      'Biomonitoring Projects',
+      'Health and Safety Management',
+      'Sustainability Initiatives',
+      'Risk Management Systems',
+      'Environmental Reporting',
+      'Project Coordination',
+    ],
+    experienceSummary:
+      'Her experience includes environmental impact assessments, environmental compliance audits, biomonitoring projects, environmental reporting, health and safety management and sustainability initiatives.',
+    professionalFocus:
+      'Sustainable development, environmental stewardship and safe working environments.',
+  },
+  {
+    id: 'jonas-lufuluabo',
+    name: 'Jonas Lufuluabo',
+    position: 'Business Development Manager (DRC) & Director',
+    image: 'jonas.jpg',
+    intro:
+      'Leads business growth strategy and market expansion across the Democratic Republic of Congo. Holds a Bachelor\'s Degree in Computer Science and is Cisco Certified. His role includes business development, client relationship management, strategic partnerships, market expansion, stakeholder engagement, business agreements and commercial management.',
+    qualifications: [
+      'Bachelor\'s Degree in Computer Science',
+      'Cisco Certified',
+    ],
+    expertise: [
+      'Business Development & Growth Strategy',
+      'Client Relationship Management',
+      'Strategic Partnerships & Alliances',
+      'Market Expansion & Opportunity Identification',
+      'Stakeholder Engagement',
+      'Contract Negotiation & Business Agreements',
+      'Commercial Management',
+      'Project Support from Opportunity to Contract Award',
+      'Market Intelligence & Analysis',
+      'Team Leadership & Coordination',
+    ],
+    experienceSummary:
+      'He works on developing relationships and opportunities with mining companies, government institutions and industrial clients in the DRC, supporting the company\'s regional expansion.',
+    professionalFocus:
+      'Business development, strategic partnerships, and market expansion across the Democratic Republic of Congo.',
   },
 ];
 
 export function getDedicatedService(slug: string): DedicatedService | undefined {
   const normalized = slug.toLowerCase().trim().replace(/^\/services\//, '').replace(/\/$/, '');
-  
+
   // Direct match
   const direct = dedicatedServicesData.find((s) => s.slug === normalized);
   if (direct) return direct;
 
-  // Keyword / Sub-service matching
+  // Keyword / Ref matching
+  if (normalized.includes('condition') || normalized === 'cm-01') {
+    return dedicatedServicesData.find((s) => s.slug === 'condition-monitoring');
+  }
   if (normalized.includes('reliab') || normalized === 're-01') {
     return dedicatedServicesData.find((s) => s.slug === 'reliability-engineering');
   }
@@ -814,6 +824,8 @@ export function getServiceSlugForRef(ref: string): string {
   if (upper.startsWith('RE')) return 'reliability-engineering';
   if (upper.startsWith('AM')) return 'asset-management';
   if (upper.startsWith('EE') || upper.startsWith('EC')) return 'electrical-engineering';
+  if (upper.startsWith('CM')) return 'condition-monitoring';
   return 'geo-environmental';
 }
+
 
