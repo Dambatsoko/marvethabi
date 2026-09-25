@@ -154,26 +154,95 @@ ul{list-style:none;}
 .btn-sm{padding:13px 22px; font-size:13px;}
 .btn-full{width:100%;}
 
-/* ---------- NAV, pure white ---------- */
+/* ---------- THREE-ZONE RESPONSIVE NAV, pure white ---------- */
 .nav{position:fixed; inset:0 0 auto; z-index:100; background:#fff;
   padding:0; transition:box-shadow .3s ease;}
 .nav-scrolled{box-shadow:0 1px 0 var(--line), 0 8px 24px -12px rgba(22,33,30,0.18);}
-.nav-inner{display:flex; align-items:center; justify-content:space-between; height:88px;
-  transition:height .3s ease;}
+.header-inner,
+.nav-inner{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items:center;
+  width:100%;
+  height:84px;
+  padding-left:max(15px, env(safe-area-inset-left));
+  padding-right:max(15px, env(safe-area-inset-right));
+  box-sizing:border-box;
+  transition:height .3s ease;
+}
+.nav-scrolled .header-inner,
 .nav-scrolled .nav-inner{height:72px;}
-.logo{height:100%; display:flex; align-items:center; padding:1px 0;}
-.logo img{height:100%; width:auto;}
-.nav-links{display:flex; gap:32px; align-items:center;}
+
+/* 1. Logo — far left with visual drop/overlap below header */
+.logo{
+  justify-self:start;
+  align-self:start;
+  position:relative;
+  z-index:10;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  padding:4px 10px 8px;
+  border-radius:0 0 10px 10px;
+  border:1px solid var(--line);
+  border-top:none;
+  box-shadow:0 12px 28px -4px rgba(22,33,30,0.18), 0 3px 8px rgba(22,33,30,0.06);
+  transform:translateY(0);
+  transition:transform .3s ease, padding .3s ease, box-shadow .3s ease;
+}
+.logo:hover{
+  box-shadow:0 16px 34px -4px rgba(22,33,30,0.24), 0 4px 10px rgba(22,33,30,0.08);
+}
+.logo img{
+  height:92px;
+  width:auto;
+  max-width:275px;
+  object-fit:contain;
+  display:block;
+  transition:height .3s ease;
+}
+.nav-scrolled .logo{
+  padding:3px 8px 6px;
+}
+.nav-scrolled .logo img{
+  height:76px;
+  max-width:230px;
+}
+
+/* 2. Navigation — genuinely centered */
+.navigation,
+.nav-links{
+  justify-self:center;
+  display:flex;
+  gap:clamp(12px, 1.8vw, 32px);
+  align-items:center;
+  margin:0;
+  padding:0;
+}
 .nav-links a{
   font-family:var(--font-head);
   font-weight:600;
-  font-size:15px;
+  font-size:clamp(13.5px, 1.05vw, 15px);
   letter-spacing:0;
   color:var(--ink);
   transition:color .2s;
+  white-space:nowrap;
 }
 .nav-links a:hover{color:var(--brand);}
 .nav-links .btn{color:#fff;}
+.mobile-nav-cta{display:none;}
+
+/* 3. Right CTA button — extreme right */
+.header-cta{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.header-cta-btn{
+  white-space:nowrap;
+}
 .burger{display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:8px;}
 .burger span{width:24px; height:2px; background:var(--ink); display:block;}
 
@@ -446,11 +515,29 @@ ul{list-style:none;}
   .hero-right{min-height:420px; margin-top:24px;}
   .leader-grid{grid-template-columns:1fr;}
   .caps-visual{position:relative; top:auto;}
-  .nav-links{position:fixed; inset:0 0 auto; top:90px; background:#fff;
+  .header-inner,
+  .nav-inner{height:72px;}
+  .nav-scrolled .header-inner,
+  .nav-scrolled .nav-inner{height:64px;}
+  .logo{
+    padding:4px 8px 6px;
+    border-radius:0 0 8px 8px;
+  }
+  .logo img{
+    height:70px;
+    max-width:210px;
+  }
+  .nav-scrolled .logo img{
+    height:62px;
+    max-width:185px;
+  }
+  .nav-links{position:fixed; inset:0 0 auto; top:72px; background:#fff;
     box-shadow:0 24px 40px -20px rgba(22,33,30,0.25);
-    flex-direction:column; padding:24px 32px 32px; gap:16px; align-items:flex-start;
-    transform:translateY(-140%); transition:transform .35s ease;}
+    flex-direction:column; padding:24px 32px 32px; gap:16px; align-items:stretch;
+    transform:translateY(-140%); transition:transform .35s ease; z-index:90;}
+  .nav-scrolled .nav-links{top:64px;}
   .nav-links.open{transform:none;}
+  .mobile-nav-cta{display:inline-block; margin-top:8px; text-align:center;}
   .burger{display:flex;}
 }
 @media (max-width:620px){
@@ -465,8 +552,25 @@ ul{list-style:none;}
   .hero-base{flex-direction:column; gap:8px;}
   .form-card{padding:32px 24px;}
   .foot-grid{grid-template-columns:1fr;}
-  .nav-inner{height:66px;}
-  .nav-scrolled .nav-inner{height:60px;}
+  .header-inner,
+  .nav-inner{height:64px;}
+  .nav-scrolled .header-inner,
+  .nav-scrolled .nav-inner{height:58px;}
+  .nav-links{top:64px;}
+  .nav-scrolled .nav-links{top:58px;}
+  .header-cta-btn{display:none;}
+  .logo{
+    padding:3px 6px 5px;
+    border-radius:0 0 6px 6px;
+  }
+  .logo img{
+    height:56px;
+    max-width:165px;
+  }
+  .nav-scrolled .logo img{
+    height:50px;
+    max-width:150px;
+  }
   .hero-photo,.hero-photo-grey{width:100%;
     -webkit-mask-image:linear-gradient(0deg, transparent 4%, #000 30%);
     mask-image:linear-gradient(0deg, transparent 4%, #000 30%);}

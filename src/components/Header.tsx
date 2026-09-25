@@ -52,7 +52,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
 
   return (
     <header className={`nav ${isScrolled ? 'nav-scrolled' : ''}`} id="site-nav">
-      <div className="wrap nav-inner">
+      <div className="header-inner">
+        {/* Zone 1: Logo — far left */}
         <a
           href="/"
           className="logo"
@@ -61,8 +62,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
         >
           <img src="/assets/images/logo.png" alt="MarveThabi Consulting Engineers" />
         </a>
+
+        {/* Zone 2: Navigation — genuinely centered */}
         <nav
-          className={`nav-links ${menuOpen ? 'open' : ''}`}
+          className={`nav-links navigation ${menuOpen ? 'open' : ''}`}
           id="nav-links"
           aria-label="Primary"
         >
@@ -90,24 +93,35 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           </a>
           <a
             href="/#contact"
-            className="btn btn-brand btn-sm"
+            className="btn btn-brand btn-sm mobile-nav-cta"
             onClick={(e) => handleLinkClick(e, '/#contact')}
           >
             Request Consultation
           </a>
         </nav>
-        <button
-          className="burger"
-          id="burger"
-          aria-label="Menu"
-          aria-expanded={menuOpen ? 'true' : 'false'}
-          aria-controls="nav-links"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+
+        {/* Zone 3: Right CTA button */}
+        <div className="header-cta">
+          <a
+            href="/#contact"
+            className="btn btn-brand btn-sm header-cta-btn"
+            onClick={(e) => handleLinkClick(e, '/#contact')}
+          >
+            Request Consultation
+          </a>
+          <button
+            className="burger"
+            id="burger"
+            aria-label="Menu"
+            aria-expanded={menuOpen ? 'true' : 'false'}
+            aria-controls="nav-links"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </header>
   );
