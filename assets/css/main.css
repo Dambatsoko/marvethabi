@@ -728,7 +728,7 @@ button{
 .svc-group-no{font-size:clamp(56px,6vw,88px); line-height:0.9; color:transparent;
   -webkit-text-stroke:1.5px var(--btn-green);}
 .svc-group-head h2{margin-bottom:0.3em;}
-.svc-group-intro{color:#55655F; font-size:18px; max-width:56ch;}
+.svc-group-intro{color:#55655F; font-size:18px; max-width:85ch; line-height:1.6;}
 
 /* service line cards */
 .sline{display:grid; grid-template-columns:300px 1fr; background:var(--grey);
@@ -926,10 +926,28 @@ button{
 /* ---------- INTERNAL PAGES CONTAINER (8-10% wider: 1330px vs 1220px) ---------- */
 .page-wrap,
 .internal-wrap,
-.svc-page .wrap,
 .subpage .wrap,
 .detail-page .wrap{
   max-width:1330px;
+}
+
+/* ---------- SERVICES PAGE CONTAINER (Spacious layout with 100px side padding) ---------- */
+.svc-page .wrap{
+  max-width:1680px;
+  padding:0 100px;
+  box-sizing:border-box;
+}
+
+@media (max-width:1280px){
+  .svc-page .wrap{
+    padding:0 clamp(28px, 6vw, 80px);
+  }
+}
+
+@media (max-width:768px){
+  .svc-page .wrap{
+    padding:0 20px;
+  }
 }
 
 /* ---------- SERVICE CATALOGUE READ MORE BUTTON ---------- */
