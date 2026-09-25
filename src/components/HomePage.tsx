@@ -7,10 +7,15 @@ import {
   processData,
   capabilitiesData,
   leadersData,
+  getServiceSlugForRef,
 } from '../data/marvethabi';
 import { SvcIcon } from './ServiceIcons';
 
-export const HomePage: React.FC = () => {
+interface HomePageProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   // Capabilities rotator state
   const [activeCap, setActiveCap] = useState(0);
 
@@ -161,21 +166,29 @@ export const HomePage: React.FC = () => {
             </p>
             <div className="hero-cta">
               <a
-                href="#services"
+                href="/services"
                 className="btn btn-brand"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
+                  if (onNavigate) {
+                    onNavigate('/services');
+                  } else {
+                    document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
               >
                 Explore Services
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="btn btn-ghost"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                  if (onNavigate) {
+                    onNavigate('/contact');
+                  } else {
+                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
               >
                 Request Consultation
@@ -290,6 +303,33 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* ============ STATS ============ */}
+      <section className="stats" ref={statsRef}>
+        <div className="stats-grid-bg" aria-hidden="true"></div>
+        <div className="wrap stats-row">
+          <div className="stat">
+            <span className="num stat-v">{counts.blackOwned}%</span>
+            <span className="stat-l">Black Owned</span>
+          </div>
+          <div className="stat">
+            <span className="num stat-v">Level 1</span>
+            <span className="stat-l">B-BBEE</span>
+          </div>
+          <div className="stat">
+            <span className="num stat-v">{counts.experience}+</span>
+            <span className="stat-l">Years Experience</span>
+          </div>
+          <div className="stat">
+            <span className="num stat-v">{counts.projects}+</span>
+            <span className="stat-l">Projects</span>
+          </div>
+          <div className="stat">
+            <span className="num stat-v">{counts.disciplines}</span>
+            <span className="stat-l">Core Engineering Disciplines</span>
+          </div>
+        </div>
+      </section>
+
       {/* ============ ABOUT ============ */}
       <section className="about" id="about">
         <div className="wrap about-grid">
@@ -360,6 +400,32 @@ export const HomePage: React.FC = () => {
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
+                <a
+                  href={`/services/${getServiceSlugForRef(svc.ref)}`}
+                  className="sline-more-btn"
+                  style={{ marginTop: '16px', position: 'relative', zIndex: 2 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onNavigate) {
+                      onNavigate(`/services/${getServiceSlugForRef(svc.ref)}`);
+                    }
+                  }}
+                >
+                  Read More
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
                 <svg className="svc-bp" viewBox="0 0 300 60" aria-hidden="true">
                   <path
                     d="M0 50 H60 V20 H120 V50 H180 L200 30 H260 V50 H300"
@@ -411,33 +477,6 @@ export const HomePage: React.FC = () => {
                 <p className="card-body">{card.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ STATS ============ */}
-      <section className="stats" ref={statsRef}>
-        <div className="stats-grid-bg" aria-hidden="true"></div>
-        <div className="wrap stats-row">
-          <div className="stat">
-            <span className="num stat-v">{counts.blackOwned}%</span>
-            <span className="stat-l">Black Owned</span>
-          </div>
-          <div className="stat">
-            <span className="num stat-v">Level 1</span>
-            <span className="stat-l">B-BBEE</span>
-          </div>
-          <div className="stat">
-            <span className="num stat-v">{counts.experience}+</span>
-            <span className="stat-l">Years Experience</span>
-          </div>
-          <div className="stat">
-            <span className="num stat-v">{counts.projects}+</span>
-            <span className="stat-l">Projects</span>
-          </div>
-          <div className="stat">
-            <span className="num stat-v">{counts.disciplines}</span>
-            <span className="stat-l">Core Engineering Disciplines</span>
           </div>
         </div>
       </section>

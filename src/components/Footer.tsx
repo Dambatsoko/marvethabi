@@ -1,5 +1,5 @@
 import React from 'react';
-import { servicesData } from '../data/marvethabi';
+import { servicesData, getServiceSlugForRef } from '../data/marvethabi';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -10,25 +10,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   const handleLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (href.startsWith('/#')) {
-      const hash = href.substring(1);
-      if (window.location.pathname !== '/') {
-        onNavigate('/');
-        setTimeout(() => {
-          const target = document.querySelector(hash);
-          if (target) target.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      } else {
-        const target = document.querySelector(hash);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else if (href === '/services') {
-      onNavigate('/services');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (href === '/') {
-      onNavigate('/');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    onNavigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -36,7 +19,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="wrap foot-grid">
         <div>
           <div className="foot-logo">
-            <img src="/assets/images/logo.png" alt="MarveThabi Consulting Engineers" loading="lazy" />
+            <a href="/" onClick={(e) => handleLink(e, '/')}>
+              <img src="/assets/images/logo.png" alt="MarveThabi Consulting Engineers" loading="lazy" />
+            </a>
           </div>
           <p className="foot-tag">
             National infrastructure. Technical excellence. Government confidence.
@@ -44,27 +29,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
         <div>
           <span className="foot-h">Engineering Services</span>
-          {servicesData.map((svc) => (
-            <a key={svc.ref} href="/services" onClick={(e) => handleLink(e, '/services')}>
-              {svc.title}
-            </a>
-          ))}
+          {servicesData.map((svc) => {
+            const slug = getServiceSlugForRef(svc.ref);
+            return (
+              <a
+                key={svc.ref}
+                href={`/services/${slug}`}
+                onClick={(e) => handleLink(e, `/services/${slug}`)}
+              >
+                {svc.title}
+              </a>
+            );
+          })}
         </div>
         <div>
           <span className="foot-h">Company</span>
           <a href="/services" onClick={(e) => handleLink(e, '/services')}>
             Our Services
           </a>
-          <a href="/#about" onClick={(e) => handleLink(e, '/#about')}>
+          <a href="/industries" onClick={(e) => handleLink(e, '/industries')}>
+            Industries
+          </a>
+          <a href="/about" onClick={(e) => handleLink(e, '/about')}>
             About
           </a>
-          <a href="/#leadership" onClick={(e) => handleLink(e, '/#leadership')}>
+          <a href="/leadership" onClick={(e) => handleLink(e, '/leadership')}>
             Leadership
           </a>
-          <a href="/#process" onClick={(e) => handleLink(e, '/#process')}>
+          <a href="/process" onClick={(e) => handleLink(e, '/process')}>
             Process
           </a>
-          <a href="/#contact" onClick={(e) => handleLink(e, '/#contact')}>
+          <a href="/contact" onClick={(e) => handleLink(e, '/contact')}>
             Contact
           </a>
         </div>
@@ -90,3 +85,4 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     </footer>
   );
 };
+

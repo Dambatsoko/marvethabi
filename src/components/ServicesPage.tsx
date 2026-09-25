@@ -3,6 +3,7 @@ import {
   serviceGroupsData,
   affiliationsData,
   sanitizeTitle,
+  getServiceSlugForRef,
 } from '../data/marvethabi';
 import { CADPlotter } from './CADPlotter';
 import { SvcIcon } from './ServiceIcons';
@@ -74,17 +75,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       el.scrollIntoView({ behavior: 'smooth' });
       setActiveSpy(id);
     }
-  };
-
-  const handleConsultation = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    onNavigate('/');
-    setTimeout(() => {
-      const contactEl = document.getElementById('contact');
-      if (contactEl) {
-        contactEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
   };
 
   return (
@@ -199,6 +189,29 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                             <li key={idx}>{item}</li>
                           ))}
                         </ul>
+                        <a
+                          href={`/services/${getServiceSlugForRef(svc.ref)}`}
+                          className="sline-more-btn"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            onNavigate(`/services/${getServiceSlugForRef(svc.ref)}`);
+                          }}
+                        >
+                          Read More
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </a>
                       </div>
                     </article>
                   );
@@ -241,7 +254,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
               professional.
             </p>
           </div>
-          <a href="/#contact" className="btn btn-brand" onClick={handleConsultation}>
+          <a
+            href="/contact"
+            className="btn btn-brand"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/contact');
+            }}
+          >
             Request Consultation
           </a>
         </div>

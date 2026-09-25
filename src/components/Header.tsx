@@ -23,32 +23,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
-
-    if (href.startsWith('/#')) {
-      const hash = href.substring(1); // '#about'
-      if (currentPath !== '/') {
-        onNavigate('/');
-        // Wait for page to render then scroll
-        setTimeout(() => {
-          const target = document.querySelector(hash);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      } else {
-        const target = document.querySelector(hash);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    } else if (href === '/services' || href === '/services/') {
-      onNavigate('/services');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (href === '/') {
-      onNavigate('/');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    onNavigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const isServicesActive = currentPath === '/services' || currentPath.startsWith('/services');
 
   return (
     <header className={`nav ${isScrolled ? 'nav-scrolled' : ''}`} id="site-nav">
@@ -71,41 +50,54 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
         >
           <a
             href="/services"
+            className={isServicesActive ? 'active' : ''}
             onClick={(e) => handleLinkClick(e, '/services')}
-            style={currentPath === '/services' ? { color: 'var(--brand)' } : {}}
           >
             Services
           </a>
-          <a href="/#industries" onClick={(e) => handleLinkClick(e, '/#industries')}>
+          <a
+            href="/industries"
+            className={currentPath === '/industries' ? 'active' : ''}
+            onClick={(e) => handleLinkClick(e, '/industries')}
+          >
             Industries
           </a>
-          <a href="/#about" onClick={(e) => handleLinkClick(e, '/#about')}>
+          <a
+            href="/about"
+            className={currentPath === '/about' ? 'active' : ''}
+            onClick={(e) => handleLinkClick(e, '/about')}
+          >
             About
           </a>
-          <a href="/#leadership" onClick={(e) => handleLinkClick(e, '/#leadership')}>
+          <a
+            href="/leadership"
+            className={currentPath === '/leadership' ? 'active' : ''}
+            onClick={(e) => handleLinkClick(e, '/leadership')}
+          >
             Leadership
           </a>
-          <a href="/#process" onClick={(e) => handleLinkClick(e, '/#process')}>
+          <a
+            href="/process"
+            className={currentPath === '/process' ? 'active' : ''}
+            onClick={(e) => handleLinkClick(e, '/process')}
+          >
             Process
           </a>
-          <a href="/#contact" onClick={(e) => handleLinkClick(e, '/#contact')}>
-            Contact
-          </a>
           <a
-            href="/#contact"
-            className="btn btn-brand btn-sm mobile-nav-cta"
-            onClick={(e) => handleLinkClick(e, '/#contact')}
+            href="/contact"
+            className={currentPath === '/contact' ? 'active' : ''}
+            onClick={(e) => handleLinkClick(e, '/contact')}
           >
-            Request Consultation
+            Contact
           </a>
         </nav>
 
         {/* Zone 3: Right CTA button */}
         <div className="header-cta">
           <a
-            href="/#contact"
+            href="/contact"
             className="btn btn-brand btn-sm header-cta-btn"
-            onClick={(e) => handleLinkClick(e, '/#contact')}
+            onClick={(e) => handleLinkClick(e, '/contact')}
           >
             Request Consultation
           </a>
