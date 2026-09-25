@@ -141,37 +141,37 @@ export const capabilitiesData: Capability[] = [
     title: 'Electrical Infrastructure',
     description:
       'Transmission, reticulation and substation engineering for utilities, municipalities and industry. From 11kV distribution networks to bulk supply upgrades, designs are delivered to SANS and utility standards with full compliance documentation.',
-    image: 'cap-electrical.jpg',
+    image: 'service_substation_engineering_1790348244291.jpg',
   },
   {
     title: 'Asset Management',
     description:
       'ISO55000-aligned asset management frameworks covering asset registers, master data, lifecycle costing and digital twins. Built for public entities that must account for every asset on their books.',
-    image: 'cap-asset.jpg',
+    image: 'service_asset_management_1790347194800.jpg',
   },
   {
     title: 'Environmental Monitoring',
     description:
       'Groundwater monitoring networks, environmental audits and compliance reporting that keep operations within licence conditions and ahead of regulatory review.',
-    image: 'cap-environmental.jpg',
+    image: 'service_environmental_1790347236174.jpg',
   },
   {
     title: 'Reliability Engineering',
     description:
       'Criticality analysis, root cause analysis and condition monitoring programmes that reduce unplanned downtime across plant and network assets.',
-    image: 'cap-reliability.jpg',
+    image: 'service_reliability_1790347183131.jpg',
   },
   {
     title: 'Hydrogeology',
     description:
       'Aquifer characterisation, borehole siting, water use licensing and geohydrological reporting for mines, municipalities and developers.',
-    image: 'cap-hydro.jpg',
+    image: 'service_hydrogeology_1790347696314.jpg',
   },
   {
     title: 'Power Systems',
     description:
       'Load studies, protection coordination, generator and solar integration, and network master planning for growing demand.',
-    image: 'cap-power.jpg',
+    image: 'service_electrical_construction_1790348230678.jpg',
   },
 ];
 
@@ -200,7 +200,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'RE-01',
         icon: 'wave',
-        img: 'about.jpg',
+        img: 'service_reliability_1790347183131.jpg',
         title: 'Reliability Engineering Services',
         desc: 'Condition-based programmes that find failure before failure finds the plant.',
         items: [
@@ -215,7 +215,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'AM-02',
         icon: 'register',
-        img: 'hero.jpg',
+        img: 'service_asset_management_1790347194800.jpg',
         title: 'Asset Management Services',
         desc: 'ISO55000 frameworks that account for every asset, from register to digital twin.',
         items: [
@@ -230,7 +230,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'EC-03',
         icon: 'plug',
-        img: 'cap-asset.jpg',
+        img: 'service_electrical_construction_1790348230678.jpg',
         title: 'Electrical Construction',
         desc: 'Installation, commissioning and certification for residential, commercial and industrial sites.',
         items: [
@@ -245,7 +245,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'EE-04',
         icon: 'pylon',
-        img: 'cap-electrical.jpg',
+        img: 'service_substation_engineering_1790348244291.jpg',
         title: 'Electrical and Electronic Engineering',
         desc: 'Infrastructure engineering from transmission line to township reticulation.',
         items: [
@@ -270,7 +270,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'WM-05',
         icon: 'drop',
-        img: 'cap-environmental.jpg',
+        img: 'service_water_management_1790347643115.jpg',
         title: 'Water Management',
         desc: 'From licence application to long-term monitoring of ground and surface water.',
         items: [
@@ -284,7 +284,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'WS-06',
         icon: 'waste',
-        img: 'industries.jpg',
+        img: 'service_waste_management_1790347656645.jpg',
         title: 'Waste Management',
         desc: 'Classification, licensing and plans that turn waste liabilities into managed streams.',
         items: [
@@ -298,7 +298,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'AQ-07',
         icon: 'air',
-        img: 'cap-reliability.jpg',
+        img: 'service_air_quality_1790347670760.jpg',
         title: 'Air Quality Management',
         desc: 'Dust, emissions and noise kept measurable, reportable and compliant.',
         items: [
@@ -312,7 +312,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'GG-08',
         icon: 'leaf',
-        img: 'cap-power.jpg',
+        img: 'service_greenhouse_gas_1790347684937.jpg',
         title: 'Greenhouse Gas Management',
         desc: 'Carbon accounting and national reporting done to the decimal.',
         items: [
@@ -333,7 +333,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'HS-09',
         icon: 'borehole',
-        img: 'cap-hydro.jpg',
+        img: 'service_hydrogeology_1790347696314.jpg',
         title: 'Hydrogeological Studies',
         desc: 'Reading the ground: geophysics, boreholes and aquifers characterised with precision.',
         items: [
@@ -348,7 +348,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'AP-10',
         icon: 'permit',
-        img: 'hero.jpg',
+        img: 'service_authorisations_1790347877888.jpg',
         title: 'Authorisation, Permits and Licences',
         desc: 'The full authorisation pathway, from EIA to mining right, managed end to end.',
         items: [
@@ -363,7 +363,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'CA-11',
         icon: 'audit',
-        img: 'cap-environmental.jpg',
+        img: 'service_compliance_audits_1790347896626.jpg',
         title: 'Environmental Compliance Audits and Monitoring',
         desc: 'Independent audits that find the gap before the regulator does.',
         items: [
@@ -378,7 +378,7 @@ export const serviceGroupsData: ServiceGroup[] = [
       {
         ref: 'ER-12',
         icon: 'rehab',
-        img: 'industries.jpg',
+        img: 'service_rehabilitation_1790347709592.jpg',
         title: 'Environmental Rehabilitation',
         desc: 'Returning disturbed land to stable, compliant, productive condition.',
         items: [
@@ -414,6 +414,7 @@ export interface DedicatedService {
   tagline: string;
   summary: string;
   docNo: string;
+  image?: string;
   objective: string;
   capabilities: { group: string; items: string[] }[];
   approach: string;
@@ -441,6 +442,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Reliability Engineering',
     category: 'Engineering Services',
     tagline: 'Asset Reliability, Availability and Maintainability Methodologies',
+    image: 'service_reliability_1790347183131.jpg',
     summary:
       'MarveThabi improves asset reliability, availability and maintainability through structured, data-driven reliability engineering methodologies. Our engineering programmes reduce unplanned downtime, improve maintenance effectiveness, manage operational risk and extend asset life.',
     docNo: 'MT-ENG-RE-01',
@@ -471,6 +473,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Asset Management',
     category: 'Engineering Services',
     tagline: 'ISO 55000 Principles, Asset Performance & Lifecycle Cost',
+    image: 'service_asset_management_1790347194800.jpg',
     summary:
       "MarveThabi's Asset Management services are aligned with ISO 55000 principles and focus on asset performance, risk and lifecycle cost. The approach integrates technical, financial and risk considerations to support decision-making, governance and long-term asset value.",
     docNo: 'MT-ENG-AM-02',
@@ -501,6 +504,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Electrical Construction',
     category: 'Engineering Services',
     tagline: 'Installation, Commissioning, Maintenance & Compliance Certification',
+    image: 'service_electrical_construction_1790348230678.jpg',
     summary:
       'MarveThabi delivers professional electrical installation, commissioning, maintenance, fault-finding and statutory compliance certification for commercial, industrial and infrastructure facilities.',
     docNo: 'MT-ENG-EC-03',
@@ -532,6 +536,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Electrical & Electronic Engineering',
     category: 'Engineering Services',
     tagline: 'Power Infrastructure Design, Reticulation & Technical Assurance',
+    image: 'service_substation_engineering_1790348244291.jpg',
     summary:
       'Professional electrical engineering services for industrial and commercial facilities. We deliver robust power distribution designs, municipal reticulation schemes, backup power systems, and technical compliance audits.',
     docNo: 'MT-ENG-EE-04',
@@ -579,6 +584,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Condition Monitoring',
     category: 'Engineering Services',
     tagline: 'Early Fault Detection, Non-Destructive Testing & Asset Diagnostics',
+    image: 'service_condition_monitoring_1790347218708.jpg',
     summary:
       'Advanced condition monitoring supporting predictive and proactive maintenance strategies. The purpose is early fault detection, reduced unplanned downtime and improved asset reliability.',
     docNo: 'MT-ENG-CM-01',
@@ -629,6 +635,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Water Management',
     category: 'Environmental Resource Management',
     tagline: 'Water Use Licensing, Balances & Catchment Quality Protection',
+    image: 'service_water_management_1790347643115.jpg',
     summary:
       'Integrated water resource management services supporting statutory water use licensing, conservation and demand management planning, and comprehensive surface and groundwater monitoring networks.',
     docNo: 'MT-ENV-WM-05',
@@ -659,6 +666,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Waste Management',
     category: 'Environmental Resource Management',
     tagline: 'Waste Classification, Licensing & Sewage Plant Performance Audits',
+    image: 'service_waste_management_1790347656645.jpg',
     summary:
       'MarveThabi provides waste classification, waste management licensing, integrated waste planning, and sewage plant performance audits for industrial and municipal operations.',
     docNo: 'MT-ENV-WS-06',
@@ -689,6 +697,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Air Quality Management',
     category: 'Environmental Resource Management',
     tagline: 'Dust Fallout Monitoring, Atmospheric Licensing & Noise Assessment',
+    image: 'service_air_quality_1790347670760.jpg',
     summary:
       'Comprehensive ambient air quality monitoring, atmospheric emission licensing, and environmental noise assessments keeping industrial operations measurable and compliant.',
     docNo: 'MT-ENV-AQ-07',
@@ -719,6 +728,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Greenhouse Gas Management',
     category: 'Environmental Resource Management',
     tagline: 'Carbon Footprint Accounting & Mandatory Emissions Reporting',
+    image: 'service_greenhouse_gas_1790347684937.jpg',
     summary:
       "MarveThabi assists organisations to navigate South Africa's climate change legislation through precise carbon footprint calculations, NAEIS reporting, and statutory greenhouse gas management.",
     docNo: 'MT-ENV-GG-08',
@@ -749,6 +759,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Hydrogeological Studies',
     category: 'Specialist Studies',
     tagline: 'Geophysics, Borehole Development & Aquifer Yield Characterisation',
+    image: 'service_hydrogeology_1790347696314.jpg',
     summary:
       'Scientific groundwater investigation, geophysical subsurface imaging, borehole development and aquifer yield testing directed by SACNASP-registered geohydrologists.',
     docNo: 'MT-SCI-HS-09',
@@ -780,6 +791,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Authorisation, Permits and Licences',
     category: 'Specialist Studies',
     tagline: 'EIA, Water Licences, Waste Permits & Mining Rights Approvals',
+    image: 'service_authorisations_1790347877888.jpg',
     summary:
       'MarveThabi manages the entire statutory environmental approval process, from screening and environmental impact assessments to mining permits, water licences, and public participation.',
     docNo: 'MT-ENV-AP-10',
@@ -811,6 +823,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Environmental Compliance Audits & Monitoring',
     category: 'Specialist Studies',
     tagline: 'Independent Statutory Audits, ECO Oversight & Biomonitoring',
+    image: 'service_compliance_audits_1790347896626.jpg',
     summary:
       'Independent environmental auditing, on-site Environmental Control Officer (ECO) supervision, and ecological biomonitoring that identify compliance gaps before regulatory enforcement.',
     docNo: 'MT-ENV-CA-11',
@@ -843,6 +856,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Environmental Rehabilitation',
     category: 'Specialist Studies',
     tagline: 'Remediation, Land Rehabilitation & Sustainable Closure Planning',
+    image: 'service_rehabilitation_1790347709592.jpg',
     summary:
       'Practical environmental rehabilitation, contaminated land remediation, and mine closure planning that restore disturbed terrain to compliant, stable, and sustainable condition.',
     docNo: 'MT-ENV-ER-12',
@@ -873,6 +887,7 @@ export const dedicatedServicesData: DedicatedService[] = [
     title: 'Environmental Services',
     category: 'Environmental & Natural Sciences',
     tagline: 'Integrated Environmental Management, Studies & Statutory Compliance',
+    image: 'service_environmental_1790347236174.jpg',
     summary:
       'MarveThabi provides integrated environmental management and specialist advisory services supporting regulatory compliance, sustainable resource use and responsible project development across mining, industrial, utilities and infrastructure sectors.',
     docNo: 'MT-ENV-GE-04',

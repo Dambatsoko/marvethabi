@@ -171,6 +171,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                         <img
                           src={`/assets/images/${svc.img}`}
                           alt={svc.title}
+                          referrerPolicy="no-referrer"
                           loading="lazy"
                         />
                         <span className="num sline-ref">{svc.ref}</span>

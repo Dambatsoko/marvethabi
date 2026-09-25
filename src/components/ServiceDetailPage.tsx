@@ -68,6 +68,32 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
         <div className="wrap detail-grid">
           {/* Main Content Column */}
           <div className="detail-prose">
+            {service.image && (
+              <div
+                style={{
+                  width: '100%',
+                  borderRadius: '6px',
+                  overflow: 'hidden',
+                  marginBottom: '32px',
+                  border: '1px solid var(--line)',
+                  background: 'var(--grey)',
+                }}
+              >
+                <img
+                  src={`/assets/images/${service.image}`}
+                  alt={`${service.title} - MarveThabi Consulting Engineers`}
+                  referrerPolicy="no-referrer"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: '380px',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            )}
+
             <h2>Engineering Objective & Scope</h2>
             <p>{service.objective}</p>
 
