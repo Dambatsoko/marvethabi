@@ -28,6 +28,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
   };
 
   const isServicesActive = currentPath === '/services' || currentPath.startsWith('/services');
+  const isIndustriesActive = currentPath === '/industries' || currentPath.startsWith('/industries');
+  const isLeadershipActive = currentPath === '/leadership' || currentPath === '/team';
 
   return (
     <header className={`nav ${isScrolled ? 'nav-scrolled' : ''}`} id="site-nav">
@@ -57,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           </a>
           <a
             href="/industries"
-            className={currentPath === '/industries' ? 'active' : ''}
+            className={isIndustriesActive ? 'active' : ''}
             onClick={(e) => handleLinkClick(e, '/industries')}
           >
             Industries
@@ -71,10 +73,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           </a>
           <a
             href="/leadership"
-            className={currentPath === '/leadership' ? 'active' : ''}
+            className={isLeadershipActive ? 'active' : ''}
             onClick={(e) => handleLinkClick(e, '/leadership')}
           >
-            Leadership
+            Team
           </a>
           <a
             href="/process"

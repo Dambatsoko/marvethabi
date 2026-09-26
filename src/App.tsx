@@ -5,6 +5,7 @@ import { HomePage } from './components/HomePage';
 import { ServicesPage } from './components/ServicesPage';
 import { ServiceDetailPage } from './components/ServiceDetailPage';
 import { IndustriesPage } from './components/IndustriesPage';
+import { IndustryDetailPage } from './components/IndustryDetailPage';
 import { AboutPage } from './components/AboutPage';
 import { LeadershipPage } from './components/LeadershipPage';
 import { ProcessPage } from './components/ProcessPage';
@@ -49,11 +50,16 @@ export const App: React.FC = () => {
       return <IndustriesPage onNavigate={navigateTo} />;
     }
 
+    if (normalized.startsWith('/industries/')) {
+      const slug = normalized.replace('/industries/', '');
+      return <IndustryDetailPage slug={slug} onNavigate={navigateTo} />;
+    }
+
     if (normalized === '/about') {
       return <AboutPage onNavigate={navigateTo} />;
     }
 
-    if (normalized === '/leadership') {
+    if (normalized === '/leadership' || normalized === '/team') {
       return <LeadershipPage onNavigate={navigateTo} />;
     }
 

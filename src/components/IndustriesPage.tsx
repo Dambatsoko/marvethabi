@@ -13,42 +13,49 @@ export const IndustriesPage: React.FC<IndustriesPageProps> = ({ onNavigate }) =>
 
   const sectorDetails = [
     {
+      slug: 'government',
       name: 'Government & Public Entities',
       desc: 'Infrastructure auditing, GRAP 17 asset registers, and statutory compliance for national and provincial departments.',
       challenges: ['MFMA / PFMA clean audit requirements', 'National Treasury asset guidelines', 'Unbundled infrastructure registers'],
       services: ['Asset Management', 'Geo-Environmental Studies', 'Electrical Master Planning'],
     },
     {
+      slug: 'mining',
       name: 'Mining & Mineral Extraction',
       desc: 'Heavy industrial reliability, condition monitoring, water use licensing, and mine closure rehabilitation across the Bushveld and Witwatersrand basins.',
       challenges: ['Catastrophic conveyor/mill downtime', 'DWS Water Use Licence compliance', 'Contaminated site remediation'],
       services: ['Reliability Engineering', 'Hydrogeology & Aquifer Testing', 'Environmental Rehabilitation'],
     },
     {
+      slug: 'energy',
       name: 'Energy & Power Utilities',
       desc: 'Substation engineering, 132kV/11kV network reticulation, protection coordination, and solar PV hybrid integration.',
       challenges: ['Grid instability and load fluctuations', 'Relay coordination and arc-flash safety', 'Renewable microgrid synchronization'],
       services: ['High-Voltage Engineering', 'Cable Diagnostics', 'Standby Power & UPS'],
     },
     {
+      slug: 'municipalities',
       name: 'Municipalities & Metros',
       desc: 'Township electrification, high-mast illumination, water supply protection, and mSCOA-compliant infrastructure asset registers.',
       challenges: ['Service delivery mandates', 'Aging distribution networks', 'Asset capitalization and useful life estimation'],
       services: ['Electrical Reticulation', 'Water Management Plans', 'Asset Verification & Barcoding'],
     },
     {
+      slug: 'industrial',
       name: 'Industrial & Manufacturing',
       desc: 'Total fluids management, vibration monitoring, SANS 10142 COCs, and air quality emission licensing for processing plants.',
       challenges: ['Predictive vs breakdown maintenance', 'Air emissions limits (AEL)', 'Power quality harmonics (NRS 048)'],
       services: ['Condition Monitoring', 'Air Quality Audits', 'Electrical Installation & COC'],
     },
     {
+      slug: 'commercial',
       name: 'Commercial & Property Development',
       desc: 'Internal reticulation, standby generator synchronisation, bulk water licensing, and environmental impact assessments for large commercial sites.',
       challenges: ['Uninterrupted tenant power security', 'EIA and stormwater authorisations', 'Energy efficiency and smart metering'],
       services: ['Backup Power Solutions', 'EIA & Environmental Audits', 'Lighting & Power Distribution'],
     },
     {
+      slug: 'infrastructure-development',
       name: 'Bulk Infrastructure Development',
       desc: 'Civil-electrical interfaces, pipeline cathodic protection, aquifer yield testing, and environmental control officer (ECO) monitoring.',
       challenges: ['Cross-disciplinary coordination', 'Construction environmental compliance', 'Quality assurance and commissioning'],
@@ -141,6 +148,27 @@ export const IndustriesPage: React.FC<IndustriesPageProps> = ({ onNavigate }) =>
                       </span>
                     ))}
                   </div>
+                </div>
+
+                <div style={{ paddingTop: '14px', marginTop: '4px', borderTop: '1px solid var(--line)' }}>
+                  <a
+                    href={`/industries/${sec.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(`/industries/${sec.slug}`);
+                    }}
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: 'var(--brand)',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                    }}
+                  >
+                    Where Our Services Fit in This Sector &rarr;
+                  </a>
                 </div>
               </div>
             ))}

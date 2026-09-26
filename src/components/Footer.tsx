@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             About
           </a>
           <a href="/leadership" onClick={(e) => handleLink(e, '/leadership')}>
-            Leadership
+            Leadership & Team
           </a>
           <a href="/process" onClick={(e) => handleLink(e, '/process')}>
             Process

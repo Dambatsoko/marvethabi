@@ -6,7 +6,6 @@ import {
   whyData,
   processData,
   capabilitiesData,
-  leadersData,
   getServiceSlugForRef,
 } from '../data/marvethabi';
 import { SvcIcon } from './ServiceIcons';
@@ -448,16 +447,51 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="wrap ind-content">
           <div className="sec-head sec-head-light reveal">
             <h2>Industries We Serve</h2>
-            <p>Specialist support for the sectors that keep the country running.</p>
+            <p>Specialist support for the sectors that keep the country running. Click any sector to see where our services fit.</p>
           </div>
           <div className="ind-grid">
             {industriesData.map((ind, i) => (
-              <div key={ind.name} className={`ind-card reveal r-delay-${i % 4}`}>
+              <a
+                key={ind.name}
+                href={`/industries/${ind.slug}`}
+                className={`ind-card ind-card-link reveal r-delay-${i % 4}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) {
+                    onNavigate(`/industries/${ind.slug}`);
+                  }
+                }}
+                style={{
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  transition: 'transform 0.25s ease, background 0.25s ease, border-color 0.25s ease',
+                }}
+                title={`Explore how MarveThabi serves the ${ind.name} sector`}
+              >
                 <svg viewBox="0 0 48 48" className="ind-icon" aria-hidden="true">
                   <path d={ind.path} fill="none" />
                 </svg>
-                <span className="card-title">{ind.name}</span>
-              </div>
+                <span className="card-title" style={{ marginTop: '12px' }}>{ind.name}</span>
+                <span
+                  style={{
+                    fontSize: '11px',
+                    color: 'var(--brand-light, #5e9e8b)',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                    marginTop: '8px',
+                    textTransform: 'uppercase',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                  }}
+                >
+                  Where We Fit &rarr;
+                </span>
+              </a>
             ))}
           </div>
         </div>
@@ -476,38 +510,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <h3 className="card-title">{card.title}</h3>
                 <p className="card-body">{card.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ LEADERSHIP ============ */}
-      <section className="leaders" id="leadership">
-        <div className="wrap">
-          <div className="sec-head reveal">
-            <h2>Leadership</h2>
-            <p>Registered professionals accountable for every deliverable.</p>
-          </div>
-          <div className="leader-grid">
-            {leadersData.map((person, i) => (
-              <article key={person.name} className={`leader-card reveal r-delay-${i}`}>
-                <div className="leader-photo">
-                  <img
-                    src={`/assets/images/${person.image}`}
-                    alt={person.name}
-                    loading="lazy"
-                  />
-                  <div className="leader-reveal">
-                    <ul>
-                      {person.qualifications.map((q, idx) => (
-                        <li key={idx}>{q}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <h3 className="card-title">{person.name}</h3>
-                <p className="leader-role">{person.role}</p>
-              </article>
             ))}
           </div>
         </div>
