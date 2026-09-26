@@ -366,11 +366,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span className="num reg-chip">CIDB</span>
             </div>
             <a
-              href="#leadership"
+              href="/about"
               className="btn btn-dark"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector('#leadership')?.scrollIntoView({ behavior: 'smooth' });
+                if (onNavigate) {
+                  onNavigate('/about');
+                }
               }}
             >
               Learn More

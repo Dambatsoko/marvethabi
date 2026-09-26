@@ -70,7 +70,7 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
                   }}
                 >
                   <img
-                    src={`/assets/images/${leader.image}`}
+                    src={`/assets/images/${leader.image}?v=2`}
                     alt={leader.name}
                     style={{
                       width: '100%',
