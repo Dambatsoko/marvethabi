@@ -3,7 +3,6 @@ import {
   servicesData,
   clientsData,
   industriesData,
-  whyData,
   processData,
   capabilitiesData,
   getServiceSlugForRef,
@@ -494,24 +493,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   Where We Fit &rarr;
                 </span>
               </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ WHY ============ */}
-      <section className="why">
-        <div className="wrap">
-          <div className="sec-head reveal">
-            <h2>Why Choose Us</h2>
-          </div>
-          <div className="why-grid">
-            {whyData.map((card, i) => (
-              <div key={card.title} className={`why-card reveal r-delay-${i}`}>
-                <span className="num why-num">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="card-title">{card.title}</h3>
-                <p className="card-body">{card.description}</p>
-              </div>
             ))}
           </div>
         </div>
