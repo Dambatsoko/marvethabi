@@ -328,54 +328,81 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* ============ ABOUT ============ */}
+      {/* ============ ABOUT / OUR STORY ============ */}
       <section className="about" id="about">
-        <div className="wrap about-grid">
-          <div className="reveal">
-            <div className="about-frame">
-              <img
-                src="/assets/images/about.jpg"
-                alt="MarveThabi engineer testing an electrical distribution board"
-                className="about-img"
-                loading="lazy"
-              />
-              <div className="about-badge">
-                <span className="num">EST. 2013</span>
-                <span>Multidisciplinary Consultancy</span>
+        {/* Fluid Animated Ambient Background */}
+        <div className="about-ambient-glow" aria-hidden="true">
+          <div className="about-glow-orb about-glow-orb-1" />
+          <div className="about-glow-orb-2" />
+          <div className="about-glow-orb-3" />
+        </div>
+
+        <div className="wrap">
+          <div className="about-grid">
+            {/* Column 1: Narrative & Context */}
+            <div className="reveal">
+              <h2 className="about-title">Our Story</h2>
+
+              <p className="lead">
+                MarveThabi Consulting Engineers is a multidisciplinary South African engineering
+                consultancy delivering sustainable engineering solutions across the public and
+                private sectors.
+              </p>
+              <p>
+                As a Level 1 B-BBEE contributor and 100% black-owned business, the company
+                combines technical excellence with transformation, providing specialised
+                expertise in Reliability Engineering, Asset Management, Electrical Engineering
+                and Geo-Environmental Management.
+              </p>
+
+              {/* Clean Unboxed Accreditations Line */}
+              <div className="about-meta-row" aria-label="Statutory Accreditations">
+                <span>ECSA</span>
+                <span aria-hidden="true">&bull;</span>
+                <span>SACNASP</span>
+                <span aria-hidden="true">&bull;</span>
+                <span>ISO 55000</span>
+                <span aria-hidden="true">&bull;</span>
+                <span>CIDB</span>
+              </div>
+
+              {/* Action */}
+              <div className="about-actions">
+                <a
+                  href="/about"
+                  className="about-btn-primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onNavigate) {
+                      onNavigate('/about');
+                    }
+                  }}
+                >
+                  <span>Learn More</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </div>
-          </div>
-          <div className="reveal r-delay-1">
-            <h2>Our Story</h2>
-            <p className="lead">
-              MarveThabi Consulting Engineers is a multidisciplinary South African engineering
-              consultancy delivering sustainable engineering solutions across the public and
-              private sectors.
-            </p>
-            <p>
-              As a Level 1 B-BBEE contributor and 100% black-owned business, the company
-              combines technical excellence with transformation, providing specialised
-              expertise in Reliability Engineering, Asset Management, Electrical Engineering
-              and Geo-Environmental Management.
-            </p>
-            <div className="about-regs">
-              <span className="num reg-chip">ECSA</span>
-              <span className="num reg-chip">SACNASP</span>
-              <span className="num reg-chip">ISO55000</span>
-              <span className="num reg-chip">CIDB</span>
+
+            {/* Column 2: Refined Showcase Frame */}
+            <div className="reveal r-delay-1 about-showcase">
+              <div className="about-showcase-frame">
+                <img
+                  src="/assets/images/about.jpg"
+                  alt="MarveThabi engineer testing an electrical distribution board"
+                  className="about-showcase-img"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Quiet Minimalist Badge */}
+              <div className="about-quiet-badge">
+                <span className="about-badge-headline num">100% Black Owned</span>
+                <span className="about-badge-sub">Level 1 B-BBEE Contributor</span>
+              </div>
             </div>
-            <a
-              href="/about"
-              className="btn btn-dark"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) {
-                  onNavigate('/about');
-                }
-              }}
-            >
-              Learn More
-            </a>
           </div>
         </div>
       </section>
