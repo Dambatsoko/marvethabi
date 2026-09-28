@@ -41,7 +41,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           aria-label="MarveThabi Consulting Engineers"
           onClick={(e) => handleLinkClick(e, '/')}
         >
-          <img src="/assets/images/logo.png" alt="MarveThabi Consulting Engineers" />
+          <img
+            src="/assets/images/logo.png"
+            alt="MarveThabi Consulting Engineers"
+            decoding="async"
+            width="168"
+            height="34"
+          />
         </a>
 
         {/* Zone 2: Navigation — genuinely centered */}

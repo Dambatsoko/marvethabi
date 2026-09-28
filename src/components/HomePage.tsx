@@ -14,8 +14,16 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
-  // Capabilities rotator state
+  // Capabilities rotator state — only load active/visited tabs to minimize initial network payload
   const [activeCap, setActiveCap] = useState(0);
+  const [loadedCaps, setLoadedCaps] = useState<number[]>([0]);
+
+  const handleCapSelect = (index: number) => {
+    setActiveCap(index);
+    if (!loadedCaps.includes(index)) {
+      setLoadedCaps((prev) => [...prev, index]);
+    }
+  };
 
   // Contact form state
   const [formData, setFormData] = useState({
@@ -292,6 +300,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                       src={`/assets/images/${client.logo}`}
                       alt={pass === 0 ? client.name : ''}
                       loading="lazy"
+                      decoding="async"
                     />
                   </span>
                 ))}
@@ -394,6 +403,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   alt="MarveThabi engineer testing an electrical distribution board"
                   className="about-showcase-img"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -549,15 +559,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="wrap caps-grid">
           <div className="reveal">
             <div className="caps-visual">
-              {capabilitiesData.map((capab, i) => (
-                <img
-                  key={capab.title}
-                  src={`/assets/images/${capab.image}`}
-                  alt={capab.title}
-                  className={`caps-img ${activeCap === i ? 'active' : ''}`}
-                  loading="lazy"
-                />
-              ))}
+              {capabilitiesData.map((capab, i) => {
+                if (!loadedCaps.includes(i) && activeCap !== i) return null;
+                return (
+                  <img
+                    key={capab.title}
+                    src={`/assets/images/${capab.image}`}
+                    alt={capab.title}
+                    className={`caps-img ${activeCap === i ? 'active' : ''}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                );
+              })}
               <span className="num caps-fig" id="caps-fig">
                 FIG {capFigNumber} &middot; MT-CAP-0{capFigNumber}
               </span>
@@ -572,7 +586,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   className={`caps-tab ${activeCap === i ? 'active' : ''}`}
                   role="tab"
                   aria-selected={activeCap === i}
-                  onClick={() => setActiveCap(i)}
+                  onClick={() => handleCapSelect(i)}
                 >
                   <span className="num">{String(i + 1).padStart(2, '0')}</span> {capab.title}
                 </button>

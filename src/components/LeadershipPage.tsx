@@ -72,6 +72,8 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
                   <img
                     src={`/assets/images/${leader.image}?v=2`}
                     alt={leader.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: '100%',
                       height: 'auto',
@@ -408,7 +410,12 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
           <div className="affil-row">
             {affiliationsData.map((aff) => (
               <div key={aff.name} className="affil-card">
-                <img src={`/assets/images/${aff.logo}`} alt={aff.name} loading="lazy" />
+                <img
+                  src={`/assets/images/${aff.logo}`}
+                  alt={aff.name}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>

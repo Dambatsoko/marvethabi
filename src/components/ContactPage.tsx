@@ -395,6 +395,8 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <img
                       src={`/assets/images/${selectedService.leadPhoto}?v=2`}
                       alt={selectedService.leadName}
+                      loading="lazy"
+                      decoding="async"
                       style={{
                         width: '38px',
                         height: '38px',
@@ -651,6 +653,8 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <img
                       src="/assets/images/marvelous.jpg?v=2"
                       alt="Marvelous Ngoatle"
+                      loading="lazy"
+                      decoding="async"
                       style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover' }}
                     />
                     <div>
@@ -674,6 +678,8 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <img
                       src="/assets/images/thabang.jpg?v=2"
                       alt="Thabang Ngoatle"
+                      loading="lazy"
+                      decoding="async"
                       style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover' }}
                     />
                     <div>
@@ -697,6 +703,8 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <img
                       src="/assets/images/jonas.jpg?v=2"
                       alt="Jonas Lufuluabo"
+                      loading="lazy"
+                      decoding="async"
                       style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover' }}
                     />
                     <div>

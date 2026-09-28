@@ -184,7 +184,12 @@ export const IndustriesPage: React.FC<IndustriesPageProps> = ({ onNavigate }) =>
             <div className="marquee-track" aria-hidden="true">
               {clientsData.concat(clientsData).map((c, idx) => (
                 <div key={idx} className="marquee-item">
-                  <img src={`/assets/images/${c.logo}`} alt={c.name} loading="lazy" />
+                  <img
+                    src={`/assets/images/${c.logo}`}
+                    alt={c.name}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               ))}
             </div>

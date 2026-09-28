@@ -254,7 +254,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <div className="affil-row">
             {affiliationsData.map((aff) => (
               <div key={aff.name} className="affil-card">
-                <img src={`/assets/images/${aff.logo}`} alt={aff.name} loading="lazy" />
+                <img
+                  src={`/assets/images/${aff.logo}`}
+                  alt={aff.name}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>

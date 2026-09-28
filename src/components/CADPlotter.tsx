@@ -68,7 +68,7 @@ export const CADPlotter: React.FC = () => {
     };
 
     const drawNext = () => {
-      if (isCancelled) return;
+      if (isCancelled || !isVisible) return;
 
       if (idx >= queue.length) {
         setCurrentLayer('PLOT COMPLETE');
@@ -120,15 +120,22 @@ export const CADPlotter: React.FC = () => {
       animId = requestAnimationFrame(step);
     };
 
+    let isVisible = false;
+    let isStarted = false;
+
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        const entry = entries[0];
+        isVisible = entry.isIntersecting;
+        if (entry.isIntersecting) {
           setIsRunning(true);
-          timeoutId = window.setTimeout(drawNext, 500);
-          observer.disconnect();
+          if (!isStarted) {
+            isStarted = true;
+            timeoutId = window.setTimeout(drawNext, 400);
+          }
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     observer.observe(plotter);

@@ -173,6 +173,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                           alt={svc.title}
                           referrerPolicy="no-referrer"
                           loading="lazy"
+                          decoding="async"
                         />
                         <span className="num sline-ref">{svc.ref}</span>
                         <div className="sline-scan" aria-hidden="true"></div>
@@ -238,6 +239,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                   src={`/assets/images/${aff.logo}`}
                   alt={aff.name}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}

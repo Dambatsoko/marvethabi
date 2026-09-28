@@ -83,6 +83,8 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
                   src={`/assets/images/${service.image}`}
                   alt={`${service.title} - MarveThabi Consulting Engineers`}
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: '100%',
                     height: 'auto',
