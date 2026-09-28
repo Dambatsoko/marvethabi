@@ -41,23 +41,14 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
 
       {/* ============ DIRECTORS IN-DEPTH ============ */}
       <section className="detail-body-section">
-        <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
+        <div className="wrap lead-directors-list">
           {leadershipTeamData.map((leader, idx) => (
             <div
               key={leader.name}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: idx % 2 === 0 ? '360px 1fr' : '1fr 360px',
-                gap: '52px',
-                alignItems: 'start',
-                background: 'var(--grey)',
-                borderLeft: '4px solid var(--btn-green)',
-                padding: '48px 40px',
-                borderRadius: '4px',
-              }}
+              className={`lead-card ${idx % 2 !== 0 ? 'lead-card-reverse' : ''}`}
             >
               {/* Leader Photo & Registration Box */}
-              <div style={{ order: idx % 2 === 0 ? 1 : 2 }}>
+              <div className="lead-photo-col">
                 <div
                   style={{
                     position: 'relative',
@@ -114,7 +105,7 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
                       marginBottom: '10px',
                     }}
                   >
-                    Profile Outcomes & Impact
+                    Profile Outcomes &amp; Impact
                   </span>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                     {leader.outcomes.map((out, i) => (
@@ -136,7 +127,7 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
               </div>
 
               {/* Bio & Credentials Content */}
-              <div style={{ order: idx % 2 === 0 ? 2 : 1 }}>
+              <div className="lead-content-col">
                 <span
                   className="label"
                   style={{ color: 'var(--brand)', marginBottom: '8px', display: 'block' }}
@@ -145,7 +136,7 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
                 </span>
                 <h2
                   style={{
-                    fontSize: '32px',
+                    fontSize: 'clamp(26px, 3.2vw, 32px)',
                     color: 'var(--ink)',
                     marginBottom: '4px',
                     fontFamily: 'var(--font-heading)',
@@ -181,18 +172,9 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
                       marginBottom: '10px',
                     }}
                   >
-                    Qualifications & Certifications
+                    Qualifications &amp; Certifications
                   </span>
-                  <ul
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                      gap: '8px',
-                      padding: 0,
-                      margin: 0,
-                      listStyle: 'none',
-                    }}
-                  >
+                  <ul className="lead-quals-grid">
                     {leader.qualifications.map((q, i) => (
                       <li
                         key={i}
@@ -327,8 +309,8 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
             <p>Our commitment to engineering integrity, environmental stewardship, and public safety.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
-            <div style={{ background: 'var(--grey)', padding: '36px 32px', borderLeft: '3px solid var(--brand)' }}>
+          <div className="lead-gov-grid">
+            <div className="lead-gov-card">
               <h3 style={{ fontSize: '20px', color: 'var(--ink)', marginBottom: '12px', fontFamily: 'var(--font-heading)' }}>
                 ECSA Code of Practice
               </h3>
@@ -339,7 +321,7 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
               </p>
             </div>
 
-            <div style={{ background: 'var(--grey)', padding: '36px 32px', borderLeft: '3px solid var(--brand)' }}>
+            <div className="lead-gov-card">
               <h3 style={{ fontSize: '20px', color: 'var(--ink)', marginBottom: '12px', fontFamily: 'var(--font-heading)' }}>
                 SACNASP Scientific Integrity
               </h3>
@@ -350,7 +332,7 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
               </p>
             </div>
 
-            <div style={{ background: 'var(--grey)', padding: '36px 32px', borderLeft: '3px solid var(--brand)' }}>
+            <div className="lead-gov-card">
               <h3 style={{ fontSize: '20px', color: 'var(--ink)', marginBottom: '12px', fontFamily: 'var(--font-heading)' }}>
                 ISO 55000 &amp; Safety Governance
               </h3>

@@ -1402,5 +1402,135 @@ button{
   .detail-sidebar{position:static; margin-top:40px;}
 }
 
+/* ============================================================
+   PRACTICE LEADERSHIP & GOVERNANCE PAGE (RESPONSIVE)
+   ============================================================ */
+.lead-page {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.lead-directors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.lead-card {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 52px;
+  align-items: start;
+  background: var(--grey);
+  border-left: 4px solid var(--btn-green);
+  padding: 48px 40px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.lead-card.lead-card-reverse {
+  grid-template-columns: 1fr 360px;
+}
+
+.lead-card.lead-card-reverse .lead-photo-col {
+  order: 2;
+}
+
+.lead-card.lead-card-reverse .lead-content-col {
+  order: 1;
+}
+
+.lead-photo-col {
+  order: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lead-content-col {
+  order: 2;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lead-quals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.lead-gov-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.lead-gov-card {
+  background: var(--grey);
+  padding: 36px 32px;
+  border-left: 3px solid var(--brand);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .lead-directors-list {
+    gap: 44px;
+  }
+  .lead-card,
+  .lead-card.lead-card-reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 28px;
+  }
+  .lead-card .lead-photo-col,
+  .lead-card.lead-card-reverse .lead-photo-col {
+    order: 1 !important;
+    max-width: 380px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .lead-card .lead-content-col,
+  .lead-card.lead-card-reverse .lead-content-col {
+    order: 2 !important;
+    width: 100%;
+  }
+  .lead-gov-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 620px) {
+  .lead-directors-list {
+    gap: 32px;
+  }
+  .lead-card,
+  .lead-card.lead-card-reverse {
+    padding: 24px 16px;
+    gap: 24px;
+    border-left-width: 4px;
+    border-radius: 6px;
+  }
+  .lead-card .lead-photo-col,
+  .lead-card.lead-card-reverse .lead-photo-col {
+    max-width: 100%;
+  }
+  .lead-quals-grid {
+    grid-template-columns: 1fr;
+  }
+  .lead-gov-card {
+    padding: 24px 18px;
+  }
+  .lead-page .detail-body-section {
+    padding: 44px 0 60px;
+  }
+}
+
+
 
 
