@@ -27,14 +27,14 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
           <h1 className="svc-hero-title">Practice Leadership &amp; Governance</h1>
           <p className="lead svc-hero-sub">
             Accountable engineering requires certified, statutory professionals. Our practice is
-            personally directed by registered engineers, natural scientists, and international
-            business development leaders who take direct responsibility for every deliverable.
+            personally directed by registered engineers and natural scientists who take direct
+            responsibility for every deliverable.
           </p>
           <div className="svc-hero-tags">
             <span className="svc-hero-tag"><span className="tag-dot"></span>ECSA Registered Engineers</span>
             <span className="svc-hero-tag"><span className="tag-dot"></span>SACNASP Professional Natural Scientists</span>
             <span className="svc-hero-tag"><span className="tag-dot"></span>SAMTRAC Certified Safety Governance</span>
-            <span className="svc-hero-tag"><span className="tag-dot"></span>Regional Cross-Border Capability</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>ISO 55000 Asset Management</span>
           </div>
         </div>
       </section>
@@ -289,43 +289,6 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
                   </div>
                 )}
 
-                {leader.commercialResponsibilities && (
-                  <div style={{ borderTop: '1px solid var(--line)', paddingTop: '20px', marginBottom: '20px' }}>
-                    <span
-                      style={{
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: 'var(--ink)',
-                        display: 'block',
-                        marginBottom: '10px',
-                      }}
-                    >
-                      Commercial & Strategic Responsibilities (DRC & Regional)
-                    </span>
-                    <ul
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '6px',
-                        padding: 0,
-                        margin: 0,
-                        listStyle: 'none',
-                        fontSize: '13px',
-                        color: '#47564F',
-                      }}
-                    >
-                      {leader.commercialResponsibilities.map((resp, i) => (
-                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                          <span style={{ color: 'var(--brand)', fontWeight: 700 }}>&bull;</span>
-                          <span>{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 {/* Professional Focus */}
                 <div style={{ borderTop: '1px solid var(--line)', paddingTop: '20px' }}>
                   <span
@@ -389,12 +352,12 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
 
             <div style={{ background: 'var(--grey)', padding: '36px 32px', borderLeft: '3px solid var(--brand)' }}>
               <h3 style={{ fontSize: '20px', color: 'var(--ink)', marginBottom: '12px', fontFamily: 'var(--font-heading)' }}>
-                Cross-Border Commercial Integrity
+                ISO 55000 &amp; Safety Governance
               </h3>
               <p style={{ fontSize: '15px', color: '#47564F', lineHeight: 1.65 }}>
-                Our DRC and Central African business expansion adheres to the highest standards of
-                commercial transparency, international stakeholder engagement, and bilateral legal
-                compliance across public and private partnerships.
+                Our asset management frameworks, maintenance tactics, and field engineering supervision
+                are governed under ISO 55000 asset management standards and SAMTRAC-certified occupational
+                health and safety management protocols.
               </p>
             </div>
           </div>

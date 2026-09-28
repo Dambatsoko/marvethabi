@@ -280,17 +280,6 @@ export const leadersData: Leader[] = [
       'PhD Candidate in Geography (UNISA)',
     ],
   },
-  {
-    name: 'Jonas Lufuluabo',
-    role: 'Business Development Manager (DRC) & Director',
-    image: 'jonas.jpg',
-    qualifications: [
-      'B.Sc Computer Science',
-      'Cisco Certified',
-      'DRC & Regional Market Expansion',
-      'Mining, Govt & Industrial Alliances',
-    ],
-  },
 ];
 
 export const serviceGroupsData: ServiceGroup[] = [
@@ -1088,34 +1077,6 @@ export const teamData: TeamMember[] = [
     professionalFocus:
       'Sustainable development, environmental stewardship and safe working environments.',
   },
-  {
-    id: 'jonas-lufuluabo',
-    name: 'Jonas Lufuluabo',
-    position: 'Business Development Manager (DRC) & Director',
-    image: 'jonas.jpg',
-    intro:
-      'Leads business growth strategy and market expansion across the Democratic Republic of Congo. Holds a Bachelor\'s Degree in Computer Science and is Cisco Certified. His role includes business development, client relationship management, strategic partnerships, market expansion, stakeholder engagement, business agreements and commercial management.',
-    qualifications: [
-      'Bachelor\'s Degree in Computer Science',
-      'Cisco Certified',
-    ],
-    expertise: [
-      'Business Development & Growth Strategy',
-      'Client Relationship Management',
-      'Strategic Partnerships & Alliances',
-      'Market Expansion & Opportunity Identification',
-      'Stakeholder Engagement',
-      'Contract Negotiation & Business Agreements',
-      'Commercial Management',
-      'Project Support from Opportunity to Contract Award',
-      'Market Intelligence & Analysis',
-      'Team Leadership & Coordination',
-    ],
-    experienceSummary:
-      'He works on developing relationships and opportunities with mining companies, government institutions and industrial clients in the DRC, supporting the company\'s regional expansion.',
-    professionalFocus:
-      'Business development, strategic partnerships, and market expansion across the Democratic Republic of Congo.',
-  },
 ];
 
 export function getDedicatedService(slug: string): DedicatedService | undefined {
@@ -1340,52 +1301,6 @@ export const leadershipTeamData: LeaderDetail[] = [
       'Professional Excellence',
     ],
     sectors: ['Mining & Resource Extraction', 'Government Infrastructure', 'Municipal Utilities', 'Commercial Developments'],
-  },
-  {
-    name: 'Jonas Lufuluabo',
-    role: 'Business Development Manager (DRC) & Director',
-    image: 'jonas.jpg',
-    primaryRegistration: 'Business Development & Technology Leader (DRC)',
-    summary:
-      'Jonas Lufuluabo is the Business Development Manager (DRC) and Director at MarveThabi Consulting Engineers. He leads the company\'s business growth strategy and market expansion across the Democratic Republic of Congo. He holds a Bachelor\'s Degree in Computer Science and is Cisco Certified, providing a strong foundation in technology, digital solutions, and modern enterprise business systems.',
-    qualifications: [
-      'Bachelor\'s Degree in Computer Science',
-      'Cisco Certified Network Associate / Professional',
-      'Cross-Border Commercial Negotiation & Project Governance',
-      'DRC Regulatory, Mining & Commercial Protocol Specialist',
-    ],
-    areasOfExpertise: [
-      'Business Development & Strategic Market Growth',
-      'Client Relationship Management',
-      'Strategic Partnerships & International Alliances',
-      'Market Expansion & Cross-Border Opportunity Identification',
-      'High-Level Stakeholder Engagement',
-      'Contract Negotiation & Commercial Agreements',
-      'Commercial Risk Management',
-      'Project Support from Opportunity to Contract Award',
-      'Market Intelligence & Regional Industry Analysis',
-      'Team Leadership & Cross-Functional Coordination',
-    ],
-    commercialResponsibilities: [
-      'Driving commercial growth and regional footprint across the Democratic Republic of Congo',
-      'Establishing long-term strategic alliances with mining houses, government institutions, and industrial clients',
-      'Coordinating ministerial, provincial, and community stakeholder engagements',
-      'Leading commercial negotiations and drafting compliant cross-border business agreements',
-      'Supporting seamless project transition from initial scoping through to final contract award and operational execution',
-    ],
-    professionalFocus: [
-      'Creating sustainable, high-impact business opportunities across Central Africa',
-      'Strengthening partnerships between African industry and premier engineering specialists',
-      'Delivering value-driven, technically sound solutions tailored to local operating contexts',
-      'Supporting the strategic regional growth objectives of MarveThabi Consulting Engineers and its clients',
-    ],
-    outcomes: [
-      'Building Trust',
-      'Creating Opportunities',
-      'Delivering Value',
-      'Expanding Impact',
-    ],
-    sectors: ['Mining & Mineral Extraction', 'Industrial Plants', 'Energy & Power Infrastructure', 'Water Utilities', 'Geophysical & Engineering Surveying'],
   },
 ];
 
