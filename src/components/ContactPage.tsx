@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CADPlotter } from './CADPlotter';
 
 interface ContactPageProps {
   onNavigate?: (path: string) => void;
@@ -174,7 +173,7 @@ const SERVICES_CATALOGUE: ServiceAssignment[] = [
   },
 ];
 
-export const ContactPage: React.FC<ContactPageProps> = () => {
+export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -231,27 +230,25 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
       {/* ============ HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
-          <div className="svc-hero-top label">
-            <span>ENGAGE PRACTICE DIRECTORS</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>TECHNICAL CONSULTATION</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>GAUTENG &middot; NATIONAL &middot; DRC</span>
-          </div>
-          <h1 className="svc-hero-title">Start a Project With Our Team</h1>
+          <nav className="page-hero-nav" aria-label="Breadcrumb">
+            <a href="/" onClick={(e) => { e.preventDefault(); onNavigate?.('/'); }}>
+              Home
+            </a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Contact Us</span>
+          </nav>
+          <h1 className="svc-hero-title">Start an Engineering Consultation</h1>
           <p className="lead svc-hero-sub">
-            Every technical consultation is handled directly by our registered Directors. Select your service
-            area below to direct your enquiry to the responsible discipline leader.
+            Every technical consultation is handled directly by our registered Directors. Connect directly
+            with our discipline leaders for technical scoping, regulatory compliance, and project assurance.
           </p>
-        </div>
-
-        <div className="hero-base label">
-          <span>COORDINATES: 25.7479&deg; S, 28.2293&deg; E</span>
-          <span>RESPONSE SLA: &le; 24 HOURS</span>
-          <span>DIRECTOR OVERSIGHT: ECSA &middot; SACNASP &middot; SAMTRAC</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Director-Led Technical Scoping</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>&le; 24-Hour Review Response</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>South Africa &amp; Regional DRC Engagements</span>
+          </div>
         </div>
       </section>
 

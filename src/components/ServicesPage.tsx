@@ -5,7 +5,6 @@ import {
   sanitizeTitle,
   getServiceSlugForRef,
 } from '../data/marvethabi';
-import { CADPlotter } from './CADPlotter';
 import { SvcIcon } from './ServiceIcons';
 
 interface ServicesPageProps {
@@ -83,15 +82,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
 
-        {/* Self-drafting CAD plotter */}
-        <CADPlotter />
-
         <div className="wrap">
-          <div className="svc-hero-top label">
-            <span>MarveThabi Consulting Engineers</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>Service Catalogue</span>
-          </div>
+          <nav className="page-hero-nav" aria-label="Breadcrumb">
+            <a href="/" onClick={(e) => { e.preventDefault(); onNavigate('/'); }}>
+              Home
+            </a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Engineering Services</span>
+          </nav>
           <h1 className="svc-hero-title">Engineering Services</h1>
           <p className="lead svc-hero-sub">
             Three disciplines. Twelve service lines. One accountable consultancy for
@@ -111,11 +109,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
               </a>
             ))}
           </div>
-        </div>
-        <div className="hero-base label">
-          <span>DOC NO. MT-SVC-2026</span>
-          <span>12 SERVICE LINES</span>
-          <span>REV A</span>
         </div>
       </section>
 

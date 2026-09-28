@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { affiliationsData, leadershipTeamData } from '../data/marvethabi';
-import { CADPlotter } from './CADPlotter';
 
 interface LeadershipPageProps {
   onNavigate: (path: string) => void;
@@ -16,28 +15,27 @@ export const LeadershipPage: React.FC<LeadershipPageProps> = ({ onNavigate }) =>
       {/* ============ PAGE HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
-          <div className="svc-hero-top label">
-            <span>GOVERNANCE & LEADERSHIP</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>DIRECTORS & SPECIALISTS</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>STATUTORY SIGN-OFF</span>
-          </div>
-          <h1 className="svc-hero-title">Practice Leadership & Team</h1>
+          <nav className="page-hero-nav" aria-label="Breadcrumb">
+            <a href="/" onClick={(e) => { e.preventDefault(); onNavigate('/'); }}>
+              Home
+            </a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Practice Leadership</span>
+          </nav>
+          <h1 className="svc-hero-title">Practice Leadership &amp; Governance</h1>
           <p className="lead svc-hero-sub">
             Accountable engineering requires certified, statutory professionals. Our practice is
             personally directed by registered engineers, natural scientists, and international
             business development leaders who take direct responsibility for every deliverable.
           </p>
-        </div>
-
-        <div className="hero-base label">
-          <span>COUNCILS: ECSA &middot; SACNASP &middot; SAMTRAC</span>
-          <span>REGIONAL FOOTPRINT: SOUTH AFRICA &middot; DRC</span>
-          <span>REV 2.0</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>ECSA Registered Engineers</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>SACNASP Professional Natural Scientists</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>SAMTRAC Certified Safety Governance</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Regional Cross-Border Capability</span>
+          </div>
         </div>
       </section>
 

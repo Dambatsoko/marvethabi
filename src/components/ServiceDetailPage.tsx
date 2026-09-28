@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { getDedicatedService, dedicatedServicesData } from '../data/marvethabi';
-import { CADPlotter } from './CADPlotter';
 
 interface ServiceDetailPageProps {
   slug: string;
@@ -25,7 +24,6 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
       {/* ============ SERVICE HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
           <nav className="page-hero-nav" aria-label="Breadcrumb">
@@ -45,21 +43,13 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onNa
             <span>{service.title}</span>
           </nav>
 
-          <div className="svc-hero-top label">
-            <span>REF: {service.ref}</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>{service.category}</span>
-          </div>
-
           <h1 className="svc-hero-title">{service.title}</h1>
           <p className="detail-hero-tagline">{service.tagline}</p>
           <p className="lead svc-hero-sub">{service.summary}</p>
-        </div>
-
-        <div className="hero-base label">
-          <span>DOC NO. {service.docNo}</span>
-          <span>STANDARDS-DRIVEN METHODOLOGY</span>
-          <span>MARVETHABI CONSULTING ENGINEERS</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>{service.category} Discipline</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Statutory Standards Compliant</span>
+          </div>
         </div>
       </section>
 

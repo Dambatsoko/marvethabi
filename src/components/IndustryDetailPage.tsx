@@ -5,7 +5,6 @@ import {
   industryDetailsData,
   IndustryDetail,
 } from '../data/marvethabi';
-import { CADPlotter } from './CADPlotter';
 
 interface IndustryDetailPageProps {
   slug: string;
@@ -33,7 +32,6 @@ export const IndustryDetailPage: React.FC<IndustryDetailPageProps> = ({ slug, on
       {/* ============ HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
           {/* Breadcrumb */}
@@ -70,14 +68,6 @@ export const IndustryDetailPage: React.FC<IndustryDetailPageProps> = ({ slug, on
             </span>
           </nav>
 
-          <div className="svc-hero-top label">
-            <span>SECTOR ENGINEERING PROFILE</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>{industry.docNo}</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>ECSA &middot; SACNASP ACCOUNTABLE</span>
-          </div>
-
           <h1 className="svc-hero-title">{industry.name}</h1>
           <p
             style={{
@@ -90,12 +80,10 @@ export const IndustryDetailPage: React.FC<IndustryDetailPageProps> = ({ slug, on
             {industry.tagline}
           </p>
           <p className="lead svc-hero-sub">{industry.summary}</p>
-        </div>
-
-        <div className="hero-base label">
-          <span>DISCIPLINES: MULTI-DISCIPLINARY ALIGNMENT</span>
-          <span>COMPLIANCE LEVEL: STATUTORY AUDIT-READY</span>
-          <span>DOCUMENT NO: {industry.docNo}</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Critical Infrastructure Domain</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Multi-Disciplinary Engineering Alignment</span>
+          </div>
         </div>
       </section>
 

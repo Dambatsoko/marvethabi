@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { clientsData } from '../data/marvethabi';
-import { CADPlotter } from './CADPlotter';
 
 interface IndustriesPageProps {
   onNavigate: (path: string) => void;
@@ -68,26 +67,27 @@ export const IndustriesPage: React.FC<IndustriesPageProps> = ({ onNavigate }) =>
       {/* ============ PAGE HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
-          <div className="svc-hero-top label">
-            <span>SECTOR SPECIALISATION</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>PUBLIC & PRIVATE INFRASTRUCTURE</span>
-          </div>
-          <h1 className="svc-hero-title">Industries We Serve</h1>
+          <nav className="page-hero-nav" aria-label="Breadcrumb">
+            <a href="/" onClick={(e) => { e.preventDefault(); onNavigate('/'); }}>
+              Home
+            </a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Industries We Serve</span>
+          </nav>
+          <h1 className="svc-hero-title">Industries &amp; Infrastructure Sectors</h1>
           <p className="lead svc-hero-sub">
             From deep-level gold and platinum extraction to municipal bulk distribution networks,
             MarveThabi deploys registered engineering and scientific professionals tailored to the
             demanding regulatory requirements of each sector.
           </p>
-        </div>
-
-        <div className="hero-base label">
-          <span>SECTORS: 07 CRITICAL INFRASTRUCTURE DOMAINS</span>
-          <span>SANS / ISO / NEMA COMPLIANT</span>
-          <span>REV 1.9</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Mining &amp; Minerals</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Municipal Bulk Infrastructure</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Power &amp; Energy Reticulation</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Industrial Manufacturing</span>
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { whyData, affiliationsData } from '../data/marvethabi';
-import { CADPlotter } from './CADPlotter';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -72,26 +71,27 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* ============ PAGE HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
-          <div className="svc-hero-top label">
-            <span>ABOUT THE PRACTICE</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>ESTABLISHED 2013</span>
-          </div>
-          <h1 className="svc-hero-title">About MarveThabi</h1>
+          <nav className="page-hero-nav" aria-label="Breadcrumb">
+            <a href="/" onClick={(e) => { e.preventDefault(); onNavigate('/'); }}>
+              Home
+            </a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>About Us</span>
+          </nav>
+          <h1 className="svc-hero-title">About MarveThabi Consulting Engineers</h1>
           <p className="lead svc-hero-sub">
             A Level 1 B-BBEE contributor and 100% black-owned multidisciplinary South African
             consultancy providing rigorous engineering, environmental, and asset management
             solutions for national infrastructure.
           </p>
-        </div>
-
-        <div className="hero-base label">
-          <span>REG NO. 2013/000000/07</span>
-          <span>ECSA &middot; SACNASP &middot; ISO55000</span>
-          <span>PRETORIA EAST, GAUTENG</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>100% Black-Owned Enterprise</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Level 1 B-BBEE (135% Recognition)</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>ECSA &amp; SACNASP Directed</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>South Africa &amp; Regional DRC</span>
+          </div>
         </div>
       </section>
 

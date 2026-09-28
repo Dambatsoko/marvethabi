@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { CADPlotter } from './CADPlotter';
 
 interface ProcessPageProps {
   onNavigate: (path: string) => void;
@@ -90,25 +89,26 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onNavigate }) => {
       {/* ============ PAGE HERO ============ */}
       <section className="svc-hero">
         <div className="svc-hero-grid-bg" aria-hidden="true"></div>
-        <CADPlotter />
 
         <div className="wrap">
-          <div className="svc-hero-top label">
-            <span>ENGINEERING LIFECYCLE</span>
-            <span className="dot" aria-hidden="true"></span>
-            <span>STANDARDS-DRIVEN METHODOLOGY</span>
-          </div>
-          <h1 className="svc-hero-title">Engineering Process</h1>
+          <nav className="page-hero-nav" aria-label="Breadcrumb">
+            <a href="/" onClick={(e) => { e.preventDefault(); onNavigate('/'); }}>
+              Home
+            </a>
+            <span aria-hidden="true">&rsaquo;</span>
+            <span>Project Lifecycle</span>
+          </nav>
+          <h1 className="svc-hero-title">Project Delivery Lifecycle</h1>
           <p className="lead svc-hero-sub">
             A disciplined, traceable path from initial consultation and site diagnostics to
             detailed CAD engineering, construction oversight, and long-term asset optimization.
           </p>
-        </div>
-
-        <div className="hero-base label">
-          <span>STAGES: 06 VERIFIED PHASES</span>
-          <span>ISO 9001 / ISO 55000 / SANS</span>
-          <span>REV 2.1</span>
+          <div className="svc-hero-tags">
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Stage-Gate Quality Assurance</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>SANS &amp; ISO 55000 Alignment</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Statutory Professional Oversight</span>
+            <span className="svc-hero-tag"><span className="tag-dot"></span>Commissioning &amp; Handover</span>
+          </div>
         </div>
       </section>
 
